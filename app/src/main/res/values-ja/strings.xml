@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OrgDay</string>
+
+    <!-- General -->
+    <string name="btn_ok">OK</string>
+    <string name="btn_cancel">キャンセル</string>
+    <string name="btn_close">閉じる</string>
+    <string name="btn_delete">削除</string>
+    <string name="btn_save">保存</string>
+    <string name="btn_add">追加</string>
+    <string name="btn_create">作成</string>
+
+    <!-- HomeScreen -->
+    <string name="app_title">デイリープランナー</string>
+    <string name="today_badge">今日</string>
+    <string name="btn_change_date">日付を変更</string>
+    <string name="btn_new_task">新しいタスク</string>
+    <string name="hint_select_list">リストを選択</string>
+    <string name="no_lists_created">リストがありません</string>
+    <string name="btn_new_list">新しいリスト</string>
+    <string name="empty_no_lists_title">リストがまだありません</string>
+    <string name="empty_no_lists_subtitle">＋をタップして最初のリストを作成</string>
+    <string name="empty_select_list_title">リストを選択してください</string>
+    <string name="empty_select_list_subtitle">タスクを表示するリストを選択</string>
+    <string name="empty_no_tasks_title">タスクがありません</string>
+    <string name="empty_no_tasks_subtitle">＋をタップしてタスクを追加</string>
+    <string name="menu_clear_all">すべてクリア</string>
+    <string name="menu_export_backup">バックアップを書き出す</string>
+    <string name="menu_import_backup">バックアップを読み込む</string>
+    <string name="menu_language">言語</string>
+    <string name="lang_pt_br">🇧🇷  Português (BR)</string>
+    <string name="lang_en_us">🇺🇸  English (US)</string>
+    <string name="dlg_clear_all_title">すべて削除</string>
+    <string name="dlg_clear_all_message">この操作により、すべてのリストとタスクが完全に削除されます。\n\nこの操作は元に戻せません。よろしいですか？</string>
+    <string name="btn_clear_all_confirm">すべて削除</string>
+    <string name="dlg_imported_title">インポート完了</string>
+    <string name="dlg_imported_message">バックアップのインポートに成功しました！リストとタスクが追加されました。</string>
+    <string name="dlg_error_title">エラー</string>
+    <string name="dlg_import_error_message">ファイルをインポートできませんでした。有効な Planner Diário バックアップであることを確認してください。</string>
+    <string name="dark_mode_label">ダークモード</string>
+    <string name="light_mode_label">ライトモード</string>
+
+    <!-- AddTaskDialog -->
+    <string name="dlg_new_task_title">新しいタスク</string>
+    <string name="dlg_edit_task_title">タスクを編集</string>
+    <string name="hint_task_title">タスクのタイトル…</string>
+    <string name="error_title_required">タイトルは必須です</string>
+    <string name="hint_task_description">説明（任意）…</string>
+    <string name="label_attachment">添付ファイル（任意）</string>
+    <string name="btn_image">画像</string>
+    <string name="btn_link">リンク</string>
+    <string name="hint_url">URL (https://…)</string>
+    <string name="label_scheduled_task">スケジュールされたタスク</string>
+    <string name="label_scheduled_subtitle">選択した日付にリンク</string>
+    <string name="label_repeat_days">何日間繰り返しますか？</string>
+    <string name="hint_repeat_days">日数</string>
+    <string name="attachment_fallback">ファイル</string>
+
+    <!-- TaskItem -->
+    <string name="btn_edit">編集</string>
+    <string name="btn_remove">削除</string>
+    <string name="dlg_delete_task_title">タスクを削除しますか？</string>
+    <string name="dlg_delete_task_message">"%1$s" は完全に削除されます。</string>
+
+    <!-- AddListDialog -->
+    <string name="dlg_new_list_title">新しいリスト</string>
+    <string name="hint_list_name">リスト名…</string>
+    <string name="lbl_auto">自動</string>
+
+    <!-- CustomDatePickerDialog -->
+    <string name="dlg_select_date_title">日付を選択</string>
+    <string name="btn_prev_month">前月</string>
+    <string name="btn_next_month">翌月</string>
+    <string name="legend_completed">完了</string>
+    <string name="legend_scheduled">予定済み</string>
+</resources>
+

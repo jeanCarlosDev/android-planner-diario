@@ -1,3 +1,76 @@
 <resources>
-    <string name="app_name">Planner Diario</string>
+    <string name="app_name">OrgDay</string>
+
+    <!-- Geral -->
+    <string name="btn_ok">OK</string>
+    <string name="btn_cancel">Cancelar</string>
+    <string name="btn_close">Fechar</string>
+    <string name="btn_delete">Apagar</string>
+    <string name="btn_save">Salvar</string>
+    <string name="btn_add">Adicionar</string>
+    <string name="btn_create">Criar</string>
+
+    <!-- HomeScreen -->
+    <string name="app_title">PLANNER DIÁRIO</string>
+    <string name="today_badge">HOJE</string>
+    <string name="btn_change_date">MUDAR DATA</string>
+    <string name="btn_new_task">Nova Tarefa</string>
+    <string name="hint_select_list">Selecionar lista</string>
+    <string name="no_lists_created">Nenhuma lista criada</string>
+    <string name="btn_new_list">Nova lista</string>
+    <string name="empty_no_lists_title">Nenhuma lista ainda</string>
+    <string name="empty_no_lists_subtitle">Toque em + para criar sua primeira lista</string>
+    <string name="empty_select_list_title">Selecione uma lista</string>
+    <string name="empty_select_list_subtitle">Escolha uma lista para ver as tarefas</string>
+    <string name="empty_no_tasks_title">Nenhuma tarefa</string>
+    <string name="empty_no_tasks_subtitle">Toque em + para adicionar uma tarefa</string>
+    <string name="menu_clear_all">Limpar tudo</string>
+    <string name="menu_export_backup">Exportar backup</string>
+    <string name="menu_import_backup">Importar backup</string>
+    <string name="menu_language">Idioma</string>
+    <string name="lang_pt_br">🇧🇷  Português (BR)</string>
+    <string name="lang_en_us">🇺🇸  English (US)</string>
+    <string name="dlg_clear_all_title">APAGAR TUDO</string>
+    <string name="dlg_clear_all_message">Esta ação irá apagar permanentemente TODAS as listas e tarefas.\n\nNão é possível desfazer esta operação. Tem certeza?</string>
+    <string name="btn_clear_all_confirm">Apagar tudo</string>
+    <string name="dlg_imported_title">IMPORTADO</string>
+    <string name="dlg_imported_message">Backup importado com sucesso! As listas e tarefas foram adicionadas.</string>
+    <string name="dlg_error_title">ERRO</string>
+    <string name="dlg_import_error_message">Não foi possível importar o arquivo. Verifique se é um backup válido do Planner Diário.</string>
+    <string name="dark_mode_label">Modo noturno</string>
+    <string name="light_mode_label">Modo claro</string>
+
+    <!-- AddTaskDialog -->
+    <string name="dlg_new_task_title">NOVA TAREFA</string>
+    <string name="dlg_edit_task_title">EDITAR TAREFA</string>
+    <string name="hint_task_title">Título da tarefa…</string>
+    <string name="error_title_required">Título obrigatório</string>
+    <string name="hint_task_description">Descrição (opcional)…</string>
+    <string name="label_attachment">Anexo (opcional)</string>
+    <string name="btn_image">Imagem</string>
+    <string name="btn_link">Link</string>
+    <string name="hint_url">URL (https://…)</string>
+    <string name="label_scheduled_task">Tarefa programada</string>
+    <string name="label_scheduled_subtitle">Vinculada à data selecionada</string>
+    <string name="label_repeat_days">Repetir por quantos dias?</string>
+    <string name="hint_repeat_days">Quantidade de dias</string>
+    <string name="attachment_fallback">arquivo</string>
+
+    <!-- TaskItem -->
+    <string name="btn_edit">Editar</string>
+    <string name="btn_remove">Remover</string>
+    <string name="dlg_delete_task_title">Apagar tarefa?</string>
+    <string name="dlg_delete_task_message">"%1$s" será removida permanentemente.</string>
+
+    <!-- AddListDialog -->
+    <string name="dlg_new_list_title">NOVA LISTA</string>
+    <string name="hint_list_name">Nome da lista…</string>
+    <string name="lbl_auto">auto</string>
+
+    <!-- CustomDatePickerDialog -->
+    <string name="dlg_select_date_title">SELECIONAR DATA</string>
+    <string name="btn_prev_month">Mês anterior</string>
+    <string name="btn_next_month">Próximo mês</string>
+    <string name="legend_completed">Concluídas</string>
+    <string name="legend_scheduled">Programadas</string>
 </resources>

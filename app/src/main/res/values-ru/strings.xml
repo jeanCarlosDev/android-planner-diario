@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OrgDay</string>
+
+    <!-- General -->
+    <string name="btn_ok">ОК</string>
+    <string name="btn_cancel">Отмена</string>
+    <string name="btn_close">Закрыть</string>
+    <string name="btn_delete">Удалить</string>
+    <string name="btn_save">Сохранить</string>
+    <string name="btn_add">Добавить</string>
+    <string name="btn_create">Создать</string>
+
+    <!-- HomeScreen -->
+    <string name="app_title">ЕЖЕДНЕВНЫЙ ПЛАНИРОВЩИК</string>
+    <string name="today_badge">СЕГОДНЯ</string>
+    <string name="btn_change_date">ИЗМЕНИТЬ ДАТУ</string>
+    <string name="btn_new_task">Новая задача</string>
+    <string name="hint_select_list">Выбрать список</string>
+    <string name="no_lists_created">Списков нет</string>
+    <string name="btn_new_list">Новый список</string>
+    <string name="empty_no_lists_title">Списков пока нет</string>
+    <string name="empty_no_lists_subtitle">Нажмите + чтобы создать первый список</string>
+    <string name="empty_select_list_title">Выберите список</string>
+    <string name="empty_select_list_subtitle">Выберите список для просмотра задач</string>
+    <string name="empty_no_tasks_title">Нет задач</string>
+    <string name="empty_no_tasks_subtitle">Нажмите + чтобы добавить задачу</string>
+    <string name="menu_clear_all">Очистить всё</string>
+    <string name="menu_export_backup">Экспорт резервной копии</string>
+    <string name="menu_import_backup">Импорт резервной копии</string>
+    <string name="menu_language">Язык</string>
+    <string name="lang_pt_br">🇧🇷  Português (BR)</string>
+    <string name="lang_en_us">🇺🇸  English (US)</string>
+    <string name="dlg_clear_all_title">УДАЛИТЬ ВСЁ</string>
+    <string name="dlg_clear_all_message">Это действие навсегда удалит ВСЕ списки и задачи.\n\nОперацию нельзя отменить. Вы уверены?</string>
+    <string name="btn_clear_all_confirm">Удалить всё</string>
+    <string name="dlg_imported_title">ИМПОРТИРОВАНО</string>
+    <string name="dlg_imported_message">Резервная копия успешно импортирована! Списки и задачи были добавлены.</string>
+    <string name="dlg_error_title">ОШИБКА</string>
+    <string name="dlg_import_error_message">Не удалось импортировать файл. Убедитесь, что это допустимая резервная копия Planner Diário.</string>
+    <string name="dark_mode_label">Тёмная тема</string>
+    <string name="light_mode_label">Светлая тема</string>
+
+    <!-- AddTaskDialog -->
+    <string name="dlg_new_task_title">НОВАЯ ЗАДАЧА</string>
+    <string name="dlg_edit_task_title">РЕДАКТИРОВАТЬ ЗАДАЧУ</string>
+    <string name="hint_task_title">Название задачи…</string>
+    <string name="error_title_required">Название обязательно</string>
+    <string name="hint_task_description">Описание (необязательно)…</string>
+    <string name="label_attachment">Вложение (необязательно)</string>
+    <string name="btn_image">Изображение</string>
+    <string name="btn_link">Ссылка</string>
+    <string name="hint_url">URL (https://…)</string>
+    <string name="label_scheduled_task">Запланированная задача</string>
+    <string name="label_scheduled_subtitle">Привязана к выбранной дате</string>
+    <string name="label_repeat_days">Повторять сколько дней?</string>
+    <string name="hint_repeat_days">Количество дней</string>
+    <string name="attachment_fallback">файл</string>
+
+    <!-- TaskItem -->
+    <string name="btn_edit">Редактировать</string>
+    <string name="btn_remove">Удалить</string>
+    <string name="dlg_delete_task_title">Удалить задачу?</string>
+    <string name="dlg_delete_task_message">"%1$s" будет удалена навсегда.</string>
+
+    <!-- AddListDialog -->
+    <string name="dlg_new_list_title">НОВЫЙ СПИСОК</string>
+    <string name="hint_list_name">Название списка…</string>
+    <string name="lbl_auto">авто</string>
+
+    <!-- CustomDatePickerDialog -->
+    <string name="dlg_select_date_title">ВЫБРАТЬ ДАТУ</string>
+    <string name="btn_prev_month">Предыдущий месяц</string>
+    <string name="btn_next_month">Следующий месяц</string>
+    <string name="legend_completed">Выполненные</string>
+    <string name="legend_scheduled">Запланированные</string>
+</resources>
+
