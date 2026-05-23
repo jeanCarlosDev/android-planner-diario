@@ -58,6 +58,7 @@ class MainActivity : AppCompatActivity() {
         setContent {
             val isDark     by themePrefs.isDarkFlow.collectAsStateWithLifecycle(initialValue = false)
             val adsRemoved by billingManager.adsRemoved.collectAsStateWithLifecycle()
+            val purchasePrice by billingManager.formattedPrice.collectAsStateWithLifecycle()
             val scope      = rememberCoroutineScope()
 
             var currentLanguageTag by remember { mutableStateOf(langPrefs.getCurrentTag()) }
@@ -82,8 +83,9 @@ class MainActivity : AppCompatActivity() {
                                 )
                             }
                         },
-                        adsRemoved  = adsRemoved,
-                        onRemoveAds = {
+                        adsRemoved    = adsRemoved,
+                        purchasePrice = purchasePrice,
+                        onRemoveAds   = {
                             billingManager.launchPurchaseFlow(this@MainActivity) { errorMsg ->
                                 Toast.makeText(this@MainActivity, errorMsg, Toast.LENGTH_LONG).show()
                             }

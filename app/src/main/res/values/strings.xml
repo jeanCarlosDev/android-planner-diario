@@ -62,8 +62,8 @@
     <string name="menu_remove_ads">Remover Anúncios</string>
     <string name="menu_ads_removed">✓ Sem anúncios</string>
     <string name="dlg_remove_ads_title">REMOVER ANÚNCIOS</string>
-    <string name="dlg_remove_ads_message">Remova todos os anúncios do aplicativo por apenas R$ 9,99. Compra única e definitiva — válida para sempre neste dispositivo.</string>
-    <string name="btn_purchase">Comprar R$ 9,99</string>
+    <string name="dlg_remove_ads_message">Remova todos os anúncios do aplicativo por apenas %s. Compra única e definitiva — válida para sempre neste dispositivo.</string>
+    <string name="btn_purchase">Comprar %s</string>
 
     <!-- AddTaskDialog -->
     <string name="dlg_new_task_title">NOVA TAREFA</string>

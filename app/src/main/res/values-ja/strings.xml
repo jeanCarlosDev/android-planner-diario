@@ -60,6 +60,11 @@
     <string name="dlg_import_error_message">ファイルをインポートできませんでした。有効な Daily Planner バックアップであることを確認してください。</string>
     <string name="dark_mode_label">ダークモード</string>
     <string name="light_mode_label">ライトモード</string>
+    <string name="menu_remove_ads">広告を削除</string>
+    <string name="menu_ads_removed">✓ 広告なし</string>
+    <string name="dlg_remove_ads_title">広告を削除</string>
+    <string name="dlg_remove_ads_message">%sで広告をすべて削除します。一度きりの購入 — このデバイスで永久に有効です。</string>
+    <string name="btn_purchase">購入 %s</string>
 
     <!-- AddTaskDialog -->
     <string name="dlg_new_task_title">新しいタスク</string>

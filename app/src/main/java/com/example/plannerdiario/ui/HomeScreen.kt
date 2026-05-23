@@ -71,6 +71,7 @@ fun HomeScreen(
     onToggleDark: () -> Unit = {},
     onChangeLanguage: (String) -> Unit = {},
     adsRemoved: Boolean = false,
+    purchasePrice: String? = null,
     onRemoveAds: () -> Unit = {},
     onInteraction: () -> Unit = {}
 ) {
@@ -211,10 +212,11 @@ fun HomeScreen(
 
     // ── Diálogo: Remover Anúncios ─────────────────────────────────────────
     if (showRemoveAdsDialog) {
+        val priceLabel = purchasePrice ?: "..."
         AppConfirmDialog(
             title        = stringResource(R.string.dlg_remove_ads_title),
-            message      = stringResource(R.string.dlg_remove_ads_message),
-            confirmLabel = stringResource(R.string.btn_purchase),
+            message      = stringResource(R.string.dlg_remove_ads_message, priceLabel),
+            confirmLabel = stringResource(R.string.btn_purchase, priceLabel),
             onConfirm    = {
                 showRemoveAdsDialog = false
                 onRemoveAds()

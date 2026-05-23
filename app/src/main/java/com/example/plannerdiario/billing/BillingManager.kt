@@ -36,6 +36,10 @@ class BillingManager(
     private val _isPurchaseAvailable = MutableStateFlow(false)
     val isPurchaseAvailable: StateFlow<Boolean> = _isPurchaseAvailable
 
+    /** Preço formatado na moeda local do usuário, ex: "R$ 9,99" / "$9.99" / "€8,99" */
+    private val _formattedPrice = MutableStateFlow<String?>(null)
+    val formattedPrice: StateFlow<String?> = _formattedPrice
+
     private var productDetails: ProductDetails? = null
 
     private val billingClient: BillingClient = BillingClient.newBuilder(context)
@@ -85,6 +89,10 @@ class BillingManager(
         if (result.billingResult.responseCode == BillingClient.BillingResponseCode.OK) {
             productDetails = result.productDetailsList?.firstOrNull()
             _isPurchaseAvailable.value = productDetails != null
+            // Extrai o preço formatado na moeda local (ex: "R$ 9,99", "$9.99", "€8,99")
+            _formattedPrice.value = productDetails
+                ?.oneTimePurchaseOfferDetails
+                ?.formattedPrice
         } else {
             _isPurchaseAvailable.value = false
         }

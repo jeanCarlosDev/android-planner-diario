@@ -63,8 +63,8 @@
     <string name="menu_remove_ads">Remove Ads</string>
     <string name="menu_ads_removed">✓ Ad-free</string>
     <string name="dlg_remove_ads_title">REMOVE ADS</string>
-    <string name="dlg_remove_ads_message">Remove all ads from the app for just $9.99. A one-time purchase — valid forever on this device.</string>
-    <string name="btn_purchase">Buy $9.99</string>
+    <string name="dlg_remove_ads_message">Remove all ads from the app for just %s. A one-time purchase — valid forever on this device.</string>
+    <string name="btn_purchase">Buy %s</string>
 
     <!-- AddTaskDialog -->
     <string name="dlg_new_task_title">NEW TASK</string>

@@ -60,6 +60,11 @@
     <string name="dlg_import_error_message">Tidak dapat mengimpor file. Periksa apakah itu cadangan Daily Planner yang valid.</string>
     <string name="dark_mode_label">Mode gelap</string>
     <string name="light_mode_label">Mode terang</string>
+    <string name="menu_remove_ads">Hapus iklan</string>
+    <string name="menu_ads_removed">✓ Tanpa iklan</string>
+    <string name="dlg_remove_ads_title">HAPUS IKLAN</string>
+    <string name="dlg_remove_ads_message">Hapus semua iklan dari aplikasi hanya dengan %s. Pembelian sekali seumur hidup — berlaku selamanya di perangkat ini.</string>
+    <string name="btn_purchase">Beli %s</string>
 
     <!-- AddTaskDialog -->
     <string name="dlg_new_task_title">TUGAS BARU</string>

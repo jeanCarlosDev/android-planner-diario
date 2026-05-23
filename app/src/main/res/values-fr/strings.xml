@@ -60,6 +60,11 @@
     <string name="dlg_import_error_message">Impossible d\'importer le fichier. Vérifiez qu\'il s\'agit d\'une sauvegarde valide de Daily Planner.</string>
     <string name="dark_mode_label">Mode sombre</string>
     <string name="light_mode_label">Mode clair</string>
+    <string name="menu_remove_ads">Supprimer les pubs</string>
+    <string name="menu_ads_removed">✓ Sans publicité</string>
+    <string name="dlg_remove_ads_title">SUPPRIMER LES PUBLICITÉS</string>
+    <string name="dlg_remove_ads_message">Supprimez toutes les publicités de l\'application pour seulement %s. Achat unique et définitif — valable pour toujours sur cet appareil.</string>
+    <string name="btn_purchase">Acheter %s</string>
 
     <!-- AddTaskDialog -->
     <string name="dlg_new_task_title">NOUVELLE TÂCHE</string>

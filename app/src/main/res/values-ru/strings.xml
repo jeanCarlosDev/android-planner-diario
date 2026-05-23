@@ -60,6 +60,11 @@
     <string name="dlg_import_error_message">Не удалось импортировать файл. Убедитесь, что это допустимая резервная копия Daily Planner.</string>
     <string name="dark_mode_label">Тёмная тема</string>
     <string name="light_mode_label">Светлая тема</string>
+    <string name="menu_remove_ads">Убрать рекламу</string>
+    <string name="menu_ads_removed">✓ Без рекламы</string>
+    <string name="dlg_remove_ads_title">УБРАТЬ РЕКЛАМУ</string>
+    <string name="dlg_remove_ads_message">Уберите всю рекламу из приложения всего за %s. Единоразовая покупка — действует навсегда на этом устройстве.</string>
+    <string name="btn_purchase">Купить %s</string>
 
     <!-- AddTaskDialog -->
     <string name="dlg_new_task_title">НОВАЯ ЗАДАЧА</string>

@@ -60,6 +60,11 @@
     <string name="dlg_import_error_message">파일을 가져올 수 없습니다. 유효한 Daily Planner 백업인지 확인하세요.</string>
     <string name="dark_mode_label">다크 모드</string>
     <string name="light_mode_label">라이트 모드</string>
+    <string name="menu_remove_ads">광고 제거</string>
+    <string name="menu_ads_removed">✓ 광고 없음</string>
+    <string name="dlg_remove_ads_title">광고 제거</string>
+    <string name="dlg_remove_ads_message">%s으로 앱의 모든 광고를 제거하세요. 단 한 번의 구매 — 이 기기에서 영구적으로 유효합니다.</string>
+    <string name="btn_purchase">구매 %s</string>
 
     <!-- AddTaskDialog -->
     <string name="dlg_new_task_title">새 작업</string>

@@ -60,6 +60,11 @@
     <string name="dlg_import_error_message">Die Datei konnte nicht importiert werden. Bitte überprüfe, ob es sich um ein gültiges Daily Planner-Backup handelt.</string>
     <string name="dark_mode_label">Dunkler Modus</string>
     <string name="light_mode_label">Heller Modus</string>
+    <string name="menu_remove_ads">Werbung entfernen</string>
+    <string name="menu_ads_removed">✓ Werbefrei</string>
+    <string name="dlg_remove_ads_title">WERBUNG ENTFERNEN</string>
+    <string name="dlg_remove_ads_message">Entferne alle Werbung aus der App für nur %s. Einmaliger Kauf — dauerhaft auf diesem Gerät gültig.</string>
+    <string name="btn_purchase">Kaufen %s</string>
 
     <!-- AddTaskDialog -->
     <string name="dlg_new_task_title">NEUE AUFGABE</string>

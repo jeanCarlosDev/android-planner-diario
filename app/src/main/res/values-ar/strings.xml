@@ -60,6 +60,11 @@
     <string name="dlg_import_error_message">تعذّر استيراد الملف. يرجى التحقق من أنه نسخة احتياطية صالحة من Daily Planner.</string>
     <string name="dark_mode_label">الوضع الداكن</string>
     <string name="light_mode_label">الوضع الفاتح</string>
+    <string name="menu_remove_ads">إزالة الإعلانات</string>
+    <string name="menu_ads_removed">✓ بدون إعلانات</string>
+    <string name="dlg_remove_ads_title">إزالة الإعلانات</string>
+    <string name="dlg_remove_ads_message">احذف جميع الإعلانات من التطبيق مقابل %s فقط. شراء لمرة واحدة — صالح إلى الأبد على هذا الجهاز.</string>
+    <string name="btn_purchase">شراء %s</string>
 
     <!-- AddTaskDialog -->
     <string name="dlg_new_task_title">مهمة جديدة</string>

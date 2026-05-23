@@ -60,6 +60,11 @@
     <string name="dlg_import_error_message">No se pudo importar el archivo. Verifica si es una copia de seguridad válida de Daily Planner.</string>
     <string name="dark_mode_label">Modo oscuro</string>
     <string name="light_mode_label">Modo claro</string>
+    <string name="menu_remove_ads">Eliminar anuncios</string>
+    <string name="menu_ads_removed">✓ Sin anuncios</string>
+    <string name="dlg_remove_ads_title">ELIMINAR ANUNCIOS</string>
+    <string name="dlg_remove_ads_message">Elimina todos los anuncios de la app por solo %s. Compra única y definitiva — válida para siempre en este dispositivo.</string>
+    <string name="btn_purchase">Comprar %s</string>
 
     <!-- AddTaskDialog -->
     <string name="dlg_new_task_title">NUEVA TAREA</string>

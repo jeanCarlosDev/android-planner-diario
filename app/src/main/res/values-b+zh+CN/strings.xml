@@ -60,6 +60,11 @@
     <string name="dlg_import_error_message">无法导入文件。请检查是否为有效的 Daily Planner 备份。</string>
     <string name="dark_mode_label">深色模式</string>
     <string name="light_mode_label">浅色模式</string>
+    <string name="menu_remove_ads">移除广告</string>
+    <string name="menu_ads_removed">✓ 无广告</string>
+    <string name="dlg_remove_ads_title">移除广告</string>
+    <string name="dlg_remove_ads_message">只需 %s 即可移除应用中的所有广告。一次性购买 — 在此设备上永久有效。</string>
+    <string name="btn_purchase">购买 %s</string>
 
     <!-- AddTaskDialog -->
     <string name="dlg_new_task_title">新建任务</string>
