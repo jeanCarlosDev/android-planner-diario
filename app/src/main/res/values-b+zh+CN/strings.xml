@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OrgDay</string>
+    <string name="app_name">Daily Planner</string>
 
     <!-- General -->
     <string name="btn_ok">OK</string>
@@ -29,6 +29,26 @@
     <string name="menu_export_backup">导出备份</string>
     <string name="menu_import_backup">导入备份</string>
     <string name="menu_language">语言</string>
+    <string name="menu_usage_suggestion">使用技巧</string>
+    <string name="menu_manage_data">数据管理</string>
+    <string name="dlg_manage_data_title">数据管理</string>
+    <string name="section_local_data">本地数据</string>
+    <string name="section_google_drive">Google 云端硬盘</string>
+    <string name="btn_connect_google">连接 Google 账户</string>
+    <string name="btn_disconnect_google">断开连接</string>
+    <string name="btn_backup_drive">保存到 Drive</string>
+    <string name="btn_restore_drive">从 Drive 恢复</string>
+    <string name="label_not_connected">未关联账户</string>
+    <string name="label_connected_as">已连接为</string>
+    <string name="drive_backup_success">备份已成功保存到 Drive！</string>
+    <string name="drive_restore_success">已从 Drive 成功恢复数据！</string>
+    <string name="drive_backup_error">保存到 Drive 失败，请重试。</string>
+    <string name="drive_restore_error">从 Drive 恢复失败，请重试。</string>
+    <string name="drive_no_backup_found">在 Drive 上未找到备份。</string>
+    <string name="drive_signin_error">连接 Google 失败。</string>
+    <string name="loading">请稍候…</string>
+    <string name="dlg_usage_title">如何使用 Daily Planner</string>
+    <string name="usage_content">&#x1F4CB; 整理您的想法\n\n&#x1F5C2; 1. 创建清单\n按主题分组（工作、学习、个人），用颜色快速查找。\n\n&#x2705; 2. 添加任务\n点击\"新任务\"，输入标题即可。\n\n&#x1F501; 3. 定时任务\n开启\"定时任务\"以设置提醒并重复习惯。\n\n&#x1F4C5; 4. 智能日历\n在日历中查看已完成和即将来临的任务。\n\n&#x1F4BE; 5. 安全备份\n导出或导入备份以保护您的数据。\n\n立即开始，让您的每天更专注。</string>
     <string name="lang_pt_br">🇧🇷  Português (BR)</string>
     <string name="lang_en_us">🇺🇸  English (US)</string>
     <string name="dlg_clear_all_title">删除全部</string>
@@ -37,7 +57,7 @@
     <string name="dlg_imported_title">已导入</string>
     <string name="dlg_imported_message">备份导入成功！列表和任务已添加。</string>
     <string name="dlg_error_title">错误</string>
-    <string name="dlg_import_error_message">无法导入文件。请检查是否为有效的 Planner Diário 备份。</string>
+    <string name="dlg_import_error_message">无法导入文件。请检查是否为有效的 Daily Planner 备份。</string>
     <string name="dark_mode_label">深色模式</string>
     <string name="light_mode_label">浅色模式</string>
 

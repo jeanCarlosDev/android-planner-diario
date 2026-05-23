@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OrgDay</string>
+    <string name="app_name">Daily Planner</string>
 
     <!-- General -->
     <string name="btn_ok">OK</string>
@@ -29,6 +29,26 @@
     <string name="menu_export_backup">Exporter la sauvegarde</string>
     <string name="menu_import_backup">Importer la sauvegarde</string>
     <string name="menu_language">Langue</string>
+    <string name="menu_usage_suggestion">Conseils d\'utilisation</string>
+    <string name="menu_manage_data">Gérer les données</string>
+    <string name="dlg_manage_data_title">GÉRER LES DONNÉES</string>
+    <string name="section_local_data">DONNÉES LOCALES</string>
+    <string name="section_google_drive">GOOGLE DRIVE</string>
+    <string name="btn_connect_google">Connecter un compte Google</string>
+    <string name="btn_disconnect_google">Déconnecter</string>
+    <string name="btn_backup_drive">Sauvegarder sur Drive</string>
+    <string name="btn_restore_drive">Restaurer depuis Drive</string>
+    <string name="label_not_connected">Aucun compte lié</string>
+    <string name="label_connected_as">Connecté en tant que</string>
+    <string name="drive_backup_success">Sauvegarde enregistrée sur Drive avec succès !</string>
+    <string name="drive_restore_success">Données restaurées depuis Drive avec succès !</string>
+    <string name="drive_backup_error">Échec de la sauvegarde sur Drive. Réessayez.</string>
+    <string name="drive_restore_error">Échec de la restauration depuis Drive. Réessayez.</string>
+    <string name="drive_no_backup_found">Aucune sauvegarde trouvée sur Drive.</string>
+    <string name="drive_signin_error">Échec de la connexion à Google.</string>
+    <string name="loading">Veuillez patienter…</string>
+    <string name="dlg_usage_title">COMMENT UTILISER DAILY PLANNER</string>
+    <string name="usage_content">&#x1F4CB; ORGANISEZ VOS IDÉES\n\n&#x1F5C2; 1. CRÉEZ VOS LISTES\nGroupez par thème (Travail, Études, Personnel) et utilisez des couleurs pour les retrouver rapidement.\n\n&#x2705; 2. AJOUTEZ DES TÂCHES\nAppuyez sur \"Nouvelle tâche\", entrez un titre et c\'est fait.\n\n&#x1F501; 3. TÂCHES PLANIFIÉES\nActivez \"Tâche planifiée\" pour vous rappeler et répéter vos habitudes.\n\n&#x1F4C5; 4. CALENDRIER INTELLIGENT\nVisualisez les tâches terminées et à venir dans le calendrier.\n\n&#x1F4BE; 5. SAUVEGARDE SÉCURISÉE\nExportez ou importez des sauvegardes pour protéger vos données.\n\nCommencez maintenant et gagnez en concentration dans votre journée.</string>
     <string name="lang_pt_br">🇧🇷  Português (BR)</string>
     <string name="lang_en_us">🇺🇸  English (US)</string>
     <string name="dlg_clear_all_title">TOUT SUPPRIMER</string>
@@ -37,7 +57,7 @@
     <string name="dlg_imported_title">IMPORTÉ</string>
     <string name="dlg_imported_message">Sauvegarde importée avec succès ! Les listes et les tâches ont été ajoutées.</string>
     <string name="dlg_error_title">ERREUR</string>
-    <string name="dlg_import_error_message">Impossible d\'importer le fichier. Vérifiez qu\'il s\'agit d\'une sauvegarde valide de Planner Diário.</string>
+    <string name="dlg_import_error_message">Impossible d\'importer le fichier. Vérifiez qu\'il s\'agit d\'une sauvegarde valide de Daily Planner.</string>
     <string name="dark_mode_label">Mode sombre</string>
     <string name="light_mode_label">Mode clair</string>
 
@@ -75,4 +95,3 @@
     <string name="legend_completed">Terminées</string>
     <string name="legend_scheduled">Planifiées</string>
 </resources>
-

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OrgDay</string>
+    <string name="app_name">Daily Planner</string>
 
     <!-- General -->
     <string name="btn_ok">OK</string>
@@ -29,6 +29,26 @@
     <string name="menu_export_backup">Export backup</string>
     <string name="menu_import_backup">Import backup</string>
     <string name="menu_language">Language</string>
+    <string name="menu_usage_suggestion">Usage Tips</string>
+    <string name="menu_manage_data">Manage Data</string>
+    <string name="dlg_manage_data_title">MANAGE DATA</string>
+    <string name="section_local_data">LOCAL DATA</string>
+    <string name="section_google_drive">GOOGLE DRIVE</string>
+    <string name="btn_connect_google">Connect Google account</string>
+    <string name="btn_disconnect_google">Disconnect</string>
+    <string name="btn_backup_drive">Save to Drive</string>
+    <string name="btn_restore_drive">Restore from Drive</string>
+    <string name="label_not_connected">No account linked</string>
+    <string name="label_connected_as">Connected as</string>
+    <string name="drive_backup_success">Backup saved to Drive successfully!</string>
+    <string name="drive_restore_success">Data restored from Drive successfully!</string>
+    <string name="drive_backup_error">Failed to save to Drive. Please try again.</string>
+    <string name="drive_restore_error">Failed to restore from Drive. Please try again.</string>
+    <string name="drive_no_backup_found">No backup found on Drive.</string>
+    <string name="drive_signin_error">Failed to connect with Google.</string>
+    <string name="loading">Please wait…</string>
+    <string name="dlg_usage_title">HOW TO USE DAILY PLANNER</string>
+    <string name="usage_content">&#x1F4CB; ORGANIZE YOUR IDEAS\n\n&#x1F5C2; 1. CREATE YOUR LISTS\nGroup by theme (Work, Studies, Personal) and use colors to find them quickly.\n\n&#x2705; 2. ADD TASKS\nTap \"New Task\", enter a title and you\'re done.\n\n&#x1F501; 3. SCHEDULED TASKS\nEnable \"Scheduled Task\" to set reminders and repeat habits.\n\n&#x1F4C5; 4. SMART CALENDAR\nSee completed and upcoming tasks in the calendar.\n\n&#x1F4BE; 5. SECURE BACKUP\nExport or import backups to keep your data safe.\n\nStart now and get more focus in your day.</string>
     <string name="lang_pt_br">🇧🇷  Português (BR)</string>
     <string name="lang_en_us">🇺🇸  English (US)</string>
     <string name="dlg_clear_all_title">DELETE ALL</string>
@@ -37,9 +57,14 @@
     <string name="dlg_imported_title">IMPORTED</string>
     <string name="dlg_imported_message">Backup imported successfully! The lists and tasks have been added.</string>
     <string name="dlg_error_title">ERROR</string>
-    <string name="dlg_import_error_message">Could not import the file. Please check if it is a valid Planner Diário backup.</string>
+    <string name="dlg_import_error_message">Could not import the file. Please check if it is a valid Daily Planner backup.</string>
     <string name="dark_mode_label">Dark mode</string>
     <string name="light_mode_label">Light mode</string>
+    <string name="menu_remove_ads">Remove Ads</string>
+    <string name="menu_ads_removed">✓ Ad-free</string>
+    <string name="dlg_remove_ads_title">REMOVE ADS</string>
+    <string name="dlg_remove_ads_message">Remove all ads from the app for just $9.99. A one-time purchase — valid forever on this device.</string>
+    <string name="btn_purchase">Buy $9.99</string>
 
     <!-- AddTaskDialog -->
     <string name="dlg_new_task_title">NEW TASK</string>
@@ -75,4 +100,3 @@
     <string name="legend_completed">Completed</string>
     <string name="legend_scheduled">Scheduled</string>
 </resources>
-

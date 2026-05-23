@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OrgDay</string>
+    <string name="app_name">Daily Planner</string>
 
     <!-- General -->
     <string name="btn_ok">حسناً</string>
@@ -29,6 +29,26 @@
     <string name="menu_export_backup">تصدير النسخ الاحتياطية</string>
     <string name="menu_import_backup">استيراد النسخ الاحتياطية</string>
     <string name="menu_language">اللغة</string>
+    <string name="menu_usage_suggestion">نصائح الاستخدام</string>
+    <string name="menu_manage_data">إدارة البيانات</string>
+    <string name="dlg_manage_data_title">إدارة البيانات</string>
+    <string name="section_local_data">البيانات المحلية</string>
+    <string name="section_google_drive">Google Drive</string>
+    <string name="btn_connect_google">ربط حساب Google</string>
+    <string name="btn_disconnect_google">قطع الاتصال</string>
+    <string name="btn_backup_drive">حفظ في Drive</string>
+    <string name="btn_restore_drive">استعادة من Drive</string>
+    <string name="label_not_connected">لا يوجد حساب مرتبط</string>
+    <string name="label_connected_as">متصل كـ</string>
+    <string name="drive_backup_success">تم حفظ النسخة الاحتياطية على Drive بنجاح!</string>
+    <string name="drive_restore_success">تم استعادة البيانات من Drive بنجاح!</string>
+    <string name="drive_backup_error">فشل الحفظ على Drive. حاول مرة أخرى.</string>
+    <string name="drive_restore_error">فشل الاستعادة من Drive. حاول مرة أخرى.</string>
+    <string name="drive_no_backup_found">لم يتم العثور على نسخة احتياطية في Drive.</string>
+    <string name="drive_signin_error">فشل الاتصال بـ Google.</string>
+    <string name="loading">يرجى الانتظار…</string>
+    <string name="dlg_usage_title">كيفية استخدام DAILY PLANNER</string>
+    <string name="usage_content">&#x1F4CB; نظّم أفكارك\n\n&#x1F5C2; 1. أنشئ قوائمك\nرتّب المهام حسب الموضوع (العمل، الدراسة، الشخصي) واستخدم الألوان للعثور عليها بسرعة.\n\n&#x2705; 2. أضف مهاما\nاضغط على \"مهمة جديدة\"، اكتب العنوان وانتهيت.\n\n&#x1F501; 3. المهام المجدولة\nفعّل \"مهمة مجدولة\" لتذكّر العادات وتكرارها.\n\n&#x1F4C5; 4. التقويم الذكي\nاعرض المهام المنجزة والقادمة في التقويم.\n\n&#x1F4BE; 5. النسخ الاحتياطي الآمن\nصدّر أو استورد النسخ الاحتياطية للحفاظ على بياناتك.\n\nابدأ الآن وزد تركيزك في يومك.</string>
     <string name="lang_pt_br">🇧🇷  Português (BR)</string>
     <string name="lang_en_us">🇺🇸  English (US)</string>
     <string name="dlg_clear_all_title">حذف الكل</string>
@@ -37,7 +57,7 @@
     <string name="dlg_imported_title">تم الاستيراد</string>
     <string name="dlg_imported_message">تم استيراد النسخة الاحتياطية بنجاح! تمت إضافة القوائم والمهام.</string>
     <string name="dlg_error_title">خطأ</string>
-    <string name="dlg_import_error_message">تعذّر استيراد الملف. يرجى التحقق من أنه نسخة احتياطية صالحة من Planner Diário.</string>
+    <string name="dlg_import_error_message">تعذّر استيراد الملف. يرجى التحقق من أنه نسخة احتياطية صالحة من Daily Planner.</string>
     <string name="dark_mode_label">الوضع الداكن</string>
     <string name="light_mode_label">الوضع الفاتح</string>
 

@@ -72,6 +72,9 @@ dependencies {
 
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.androidx.datastore.preferences)
+    implementation(libs.play.services.auth)
+    implementation(libs.google.admob)
+    implementation(libs.google.billing)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

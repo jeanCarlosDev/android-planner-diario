@@ -11,17 +11,26 @@ import androidx.compose.ui.Modifier
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.plannerdiario.ads.InterstitialAdManager
+import com.example.plannerdiario.billing.BillingManager
+import com.example.plannerdiario.data.AdPreferences
 import com.example.plannerdiario.data.LanguagePreferences
 import com.example.plannerdiario.data.ThemePreferences
 import com.example.plannerdiario.ui.HomeScreen
 import com.example.plannerdiario.ui.PlannerViewModel
 import com.example.plannerdiario.ui.PlannerViewModelFactory
 import com.example.plannerdiario.ui.theme.PlannerDiarioTheme
+import com.google.android.gms.ads.MobileAds
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var langPrefs: LanguagePreferences
+    private lateinit var billingManager: BillingManager
+    private lateinit var interstitialAdManager: InterstitialAdManager
+    private val activityScope = CoroutineScope(Dispatchers.Main)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         langPrefs = LanguagePreferences(applicationContext)
@@ -32,12 +41,23 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
 
-        val app       = application as PlannerApplication
+        val app        = application as PlannerApplication
         val themePrefs = ThemePreferences(applicationContext)
+        val adPrefs    = AdPreferences(applicationContext)
+
+        // Inicializa o AdMob de forma assíncrona (não bloqueia a UI)
+        MobileAds.initialize(this)
+
+        // Inicializa o gerenciador de compras
+        billingManager = BillingManager(applicationContext, adPrefs, activityScope)
+
+        // Pré-carrega o anúncio intersticial em segundo plano
+        interstitialAdManager = InterstitialAdManager(applicationContext)
 
         setContent {
-            val isDark by themePrefs.isDarkFlow.collectAsStateWithLifecycle(initialValue = false)
-            val scope  = rememberCoroutineScope()
+            val isDark     by themePrefs.isDarkFlow.collectAsStateWithLifecycle(initialValue = false)
+            val adsRemoved by billingManager.adsRemoved.collectAsStateWithLifecycle()
+            val scope      = rememberCoroutineScope()
 
             var currentLanguageTag by remember { mutableStateOf(langPrefs.getCurrentTag()) }
 
@@ -60,10 +80,23 @@ class MainActivity : AppCompatActivity() {
                                     LocaleListCompat.forLanguageTags(tag)
                                 )
                             }
+                        },
+                        adsRemoved  = adsRemoved,
+                        onRemoveAds = { billingManager.launchPurchaseFlow(this@MainActivity) },
+                        // Só rastreia interações se o usuário não removeu os anúncios
+                        onInteraction = {
+                            if (!adsRemoved) {
+                                interstitialAdManager.trackInteraction(this@MainActivity)
+                            }
                         }
                     )
                 }
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        billingManager.destroy()
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OrgDay</string>
+    <string name="app_name">Daily Planner</string>
 
     <!-- General -->
     <string name="btn_ok">ОК</string>
@@ -29,6 +29,26 @@
     <string name="menu_export_backup">Экспорт резервной копии</string>
     <string name="menu_import_backup">Импорт резервной копии</string>
     <string name="menu_language">Язык</string>
+    <string name="menu_usage_suggestion">Советы по использованию</string>
+    <string name="menu_manage_data">Управление данными</string>
+    <string name="dlg_manage_data_title">УПРАВЛЕНИЕ ДАННЫМИ</string>
+    <string name="section_local_data">ЛОКАЛЬНЫЕ ДАННЫЕ</string>
+    <string name="section_google_drive">GOOGLE DRIVE</string>
+    <string name="btn_connect_google">Подключить аккаунт Google</string>
+    <string name="btn_disconnect_google">Отключить</string>
+    <string name="btn_backup_drive">Сохранить на Drive</string>
+    <string name="btn_restore_drive">Восстановить с Drive</string>
+    <string name="label_not_connected">Нет привязанного аккаунта</string>
+    <string name="label_connected_as">Подключен как</string>
+    <string name="drive_backup_success">Резервная копия сохранена на Drive!</string>
+    <string name="drive_restore_success">Данные восстановлены с Drive!</string>
+    <string name="drive_backup_error">Ошибка сохранения на Drive. Попробуйте снова.</string>
+    <string name="drive_restore_error">Ошибка восстановления с Drive. Попробуйте снова.</string>
+    <string name="drive_no_backup_found">Резервная копия на Drive не найдена.</string>
+    <string name="drive_signin_error">Не удалось подключиться к Google.</string>
+    <string name="loading">Подождите…</string>
+    <string name="dlg_usage_title">КАК ИСПОЛЬЗОВАТЬ DAILY PLANNER</string>
+    <string name="usage_content">&#x1F4CB; ОРГАНИЗУЙТЕ СВОИ ИДЕИ\n\n&#x1F5C2; 1. СОЗДАЙТЕ СПИСКИ\nГруппируйте по теме (Работа, Учёба, Личное) и используйте цвета для быстрого поиска.\n\n&#x2705; 2. ДОБАВЬТЕ ЗАДАЧИ\nНажмите \"Новая задача\", введите название и готово.\n\n&#x1F501; 3. ЗАПЛАНИРОВАННЫЕ ЗАДАЧИ\nВключите \"Запланированная задача\", чтобы устанавливать напоминания и повторять привычки.\n\n&#x1F4C5; 4. УМНЫЙ КАЛЕНДАРЬ\nПросматривайте выполненные и предстоящие задачи в календаре.\n\n&#x1F4BE; 5. БЕЗОПАСНОЕ РЕЗЕРВНОЕ КОПИРОВАНИЕ\nЭкспортируйте или импортируйте резервные копии для защиты данных.\n\nНачните сейчас и сосредоточьтесь на своём дне.</string>
     <string name="lang_pt_br">🇧🇷  Português (BR)</string>
     <string name="lang_en_us">🇺🇸  English (US)</string>
     <string name="dlg_clear_all_title">УДАЛИТЬ ВСЁ</string>
@@ -37,7 +57,7 @@
     <string name="dlg_imported_title">ИМПОРТИРОВАНО</string>
     <string name="dlg_imported_message">Резервная копия успешно импортирована! Списки и задачи были добавлены.</string>
     <string name="dlg_error_title">ОШИБКА</string>
-    <string name="dlg_import_error_message">Не удалось импортировать файл. Убедитесь, что это допустимая резервная копия Planner Diário.</string>
+    <string name="dlg_import_error_message">Не удалось импортировать файл. Убедитесь, что это допустимая резервная копия Daily Planner.</string>
     <string name="dark_mode_label">Тёмная тема</string>
     <string name="light_mode_label">Светлая тема</string>
 

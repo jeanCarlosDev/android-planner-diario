@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OrgDay</string>
+    <string name="app_name">Daily Planner</string>
 
     <!-- General -->
     <string name="btn_ok">확인</string>
@@ -29,6 +29,26 @@
     <string name="menu_export_backup">백업 내보내기</string>
     <string name="menu_import_backup">백업 가져오기</string>
     <string name="menu_language">언어</string>
+    <string name="menu_usage_suggestion">사용 팁</string>
+    <string name="menu_manage_data">데이터 관리</string>
+    <string name="dlg_manage_data_title">데이터 관리</string>
+    <string name="section_local_data">로컬 데이터</string>
+    <string name="section_google_drive">Google 드라이브</string>
+    <string name="btn_connect_google">Google 계정 연결</string>
+    <string name="btn_disconnect_google">연결 해제</string>
+    <string name="btn_backup_drive">Drive에 저장</string>
+    <string name="btn_restore_drive">Drive에서 복원</string>
+    <string name="label_not_connected">연결된 계정 없음</string>
+    <string name="label_connected_as">연결됨:</string>
+    <string name="drive_backup_success">Drive에 백업 저장 완료!</string>
+    <string name="drive_restore_success">Drive에서 데이터 복원 완료!</string>
+    <string name="drive_backup_error">Drive 저장 실패. 다시 시도하세요.</string>
+    <string name="drive_restore_error">Drive 복원 실패. 다시 시도하세요.</string>
+    <string name="drive_no_backup_found">Drive에서 백업을 찾을 수 없습니다.</string>
+    <string name="drive_signin_error">Google 연결에 실패했습니다.</string>
+    <string name="loading">잠시만 기다려 주세요…</string>
+    <string name="dlg_usage_title">Daily Planner 사용 방법</string>
+    <string name="usage_content">&#x1F4CB; 아이디어 정리하기\n\n&#x1F5C2; 1. 목록 만들기\n업무, 학습, 개인 등으로 묶고 색으로 빠르게 구분하세요.\n\n&#x2705; 2. 작업 추가\n\"새 작업\"을 탭하고 제목을 입력하면 완료됩니다.\n\n&#x1F501; 3. 예약 작업\n\"예약된 작업\"을 켜서 알림을 설정하고 습관을 반복하세요.\n\n&#x1F4C5; 4. 스마트 캘린더\n캘린더에서 완료된 작업과 다가오는 작업을 확인하세요.\n\n&#x1F4BE; 5. 안전한 백업\n백업을 내보내거나 가져와 데이터를 보호하세요.\n\n지금 시작하고 하루에 더 집중하세요.</string>
     <string name="lang_pt_br">🇧🇷  Português (BR)</string>
     <string name="lang_en_us">🇺🇸  English (US)</string>
     <string name="dlg_clear_all_title">모두 삭제</string>
@@ -37,7 +57,7 @@
     <string name="dlg_imported_title">가져오기 완료</string>
     <string name="dlg_imported_message">백업을 성공적으로 가져왔습니다! 목록과 작업이 추가되었습니다.</string>
     <string name="dlg_error_title">오류</string>
-    <string name="dlg_import_error_message">파일을 가져올 수 없습니다. 유효한 Planner Diário 백업인지 확인하세요.</string>
+    <string name="dlg_import_error_message">파일을 가져올 수 없습니다. 유효한 Daily Planner 백업인지 확인하세요.</string>
     <string name="dark_mode_label">다크 모드</string>
     <string name="light_mode_label">라이트 모드</string>
 
@@ -75,4 +95,3 @@
     <string name="legend_completed">완료됨</string>
     <string name="legend_scheduled">예약됨</string>
 </resources>
-

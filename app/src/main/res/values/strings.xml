@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">OrgDay</string>
+    <string name="app_name">Daily Planner</string>
 
     <!-- Geral -->
     <string name="btn_ok">OK</string>
@@ -11,7 +11,7 @@
     <string name="btn_create">Criar</string>
 
     <!-- HomeScreen -->
-    <string name="app_title">PLANNER DIÁRIO</string>
+    <string name="app_title">DAILY PLANNER</string>
     <string name="today_badge">HOJE</string>
     <string name="btn_change_date">MUDAR DATA</string>
     <string name="btn_new_task">Nova Tarefa</string>
@@ -28,17 +28,42 @@
     <string name="menu_export_backup">Exportar backup</string>
     <string name="menu_import_backup">Importar backup</string>
     <string name="menu_language">Idioma</string>
-    <string name="lang_pt_br">🇧🇷  Português (BR)</string>
-    <string name="lang_en_us">🇺🇸  English (US)</string>
+    <string name="menu_usage_suggestion">Sugestão de Uso</string>
+    <string name="menu_manage_data">Gerenciar Dados</string>
+    <string name="dlg_manage_data_title">GERENCIAR DADOS</string>
+    <string name="section_local_data">DADOS LOCAIS</string>
+    <string name="section_google_drive">GOOGLE DRIVE</string>
+    <string name="btn_connect_google">Conectar conta Google</string>
+    <string name="btn_disconnect_google">Desconectar</string>
+    <string name="btn_backup_drive">Salvar no Drive</string>
+    <string name="btn_restore_drive">Restaurar do Drive</string>
+    <string name="label_not_connected">Nenhuma conta vinculada</string>
+    <string name="label_connected_as">Conectado como</string>
+    <string name="drive_backup_success">Backup salvo no Drive com sucesso!</string>
+    <string name="drive_restore_success">Dados restaurados do Drive com sucesso!</string>
+    <string name="drive_backup_error">Falha ao salvar no Drive. Tente novamente.</string>
+    <string name="drive_restore_error">Falha ao restaurar do Drive. Tente novamente.</string>
+    <string name="drive_no_backup_found">Nenhum backup encontrado no Drive.</string>
+    <string name="drive_signin_error">Falha ao conectar com Google.</string>
+    <string name="loading">Aguarde…</string>
+    <string name="dlg_usage_title">COMO USAR O DAILY PLANNER</string>
+    <string name="usage_content">&#x1F4CB; ORGANIZE SUAS IDEIAS\n\n&#x1F5C2; 1. CRIE SUAS LISTAS\nAgrupe por tema (Trabalho, Estudos, Pessoal) e use cores para encontrar rápido.\n\n&#x2705; 2. ADICIONE TAREFAS\nToque em \"Nova Tarefa\", escreva um título e pronto.\n\n&#x1F501; 3. TAREFAS PROGRAMADAS\nAtive \"Tarefa Programada\" para lembrar e repetir hábitos.\n\n&#x1F4C5; 4. CALENDÁRIO INTELIGENTE\nVisualize conclusão e próximas tarefas no calendário.\n\n&#x1F4BE; 5. BACKUP SEGURO\nExporte ou importe backups para manter seus dados protegidos.\n\nComece agora e ganhe mais foco no seu dia.</string>
+    <string name="lang_pt_br">  Português (BR)</string>
+    <string name="lang_en_us">  English (US)</string>
     <string name="dlg_clear_all_title">APAGAR TUDO</string>
     <string name="dlg_clear_all_message">Esta ação irá apagar permanentemente TODAS as listas e tarefas.\n\nNão é possível desfazer esta operação. Tem certeza?</string>
     <string name="btn_clear_all_confirm">Apagar tudo</string>
     <string name="dlg_imported_title">IMPORTADO</string>
     <string name="dlg_imported_message">Backup importado com sucesso! As listas e tarefas foram adicionadas.</string>
     <string name="dlg_error_title">ERRO</string>
-    <string name="dlg_import_error_message">Não foi possível importar o arquivo. Verifique se é um backup válido do Planner Diário.</string>
+    <string name="dlg_import_error_message">Não foi possível importar o arquivo. Verifique se é um backup válido do Daily Planner.</string>
     <string name="dark_mode_label">Modo noturno</string>
     <string name="light_mode_label">Modo claro</string>
+    <string name="menu_remove_ads">Remover Anúncios</string>
+    <string name="menu_ads_removed">✓ Sem anúncios</string>
+    <string name="dlg_remove_ads_title">REMOVER ANÚNCIOS</string>
+    <string name="dlg_remove_ads_message">Remova todos os anúncios do aplicativo por apenas R$ 9,99. Compra única e definitiva — válida para sempre neste dispositivo.</string>
+    <string name="btn_purchase">Comprar R$ 9,99</string>
 
     <!-- AddTaskDialog -->
     <string name="dlg_new_task_title">NOVA TAREFA</string>

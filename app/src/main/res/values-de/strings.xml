@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OrgDay</string>
+    <string name="app_name">Daily Planner</string>
 
     <!-- General -->
     <string name="btn_ok">OK</string>
@@ -29,6 +29,26 @@
     <string name="menu_export_backup">Backup exportieren</string>
     <string name="menu_import_backup">Backup importieren</string>
     <string name="menu_language">Sprache</string>
+    <string name="menu_usage_suggestion">Nutzungshinweise</string>
+    <string name="menu_manage_data">Daten verwalten</string>
+    <string name="dlg_manage_data_title">DATEN VERWALTEN</string>
+    <string name="section_local_data">LOKALE DATEN</string>
+    <string name="section_google_drive">GOOGLE DRIVE</string>
+    <string name="btn_connect_google">Google-Konto verbinden</string>
+    <string name="btn_disconnect_google">Trennen</string>
+    <string name="btn_backup_drive">In Drive sichern</string>
+    <string name="btn_restore_drive">Von Drive wiederherstellen</string>
+    <string name="label_not_connected">Kein Konto verknüpft</string>
+    <string name="label_connected_as">Verbunden als</string>
+    <string name="drive_backup_success">Backup erfolgreich auf Drive gespeichert!</string>
+    <string name="drive_restore_success">Daten erfolgreich von Drive wiederhergestellt!</string>
+    <string name="drive_backup_error">Fehler beim Speichern auf Drive. Bitte erneut versuchen.</string>
+    <string name="drive_restore_error">Fehler beim Wiederherstellen von Drive. Bitte erneut versuchen.</string>
+    <string name="drive_no_backup_found">Kein Backup auf Drive gefunden.</string>
+    <string name="drive_signin_error">Verbindung mit Google fehlgeschlagen.</string>
+    <string name="loading">Bitte warten…</string>
+    <string name="dlg_usage_title">SO VERWENDEST DU DAILY PLANNER</string>
+    <string name="usage_content">&#x1F4CB; ORGANISIERE DEINE IDEEN\n\n&#x1F5C2; 1. ERSTELLE DEINE LISTEN\nGruppiere nach Thema (Arbeit, Studium, Persönlich) und nutze Farben zum schnellen Finden.\n\n&#x2705; 2. AUFGABEN HINZUFÜGEN\nTippe auf \"Neue Aufgabe\", gib einen Titel ein und fertig.\n\n&#x1F501; 3. GEPLANTE AUFGABEN\nAktiviere \"Geplante Aufgabe\", um Erinnerungen zu setzen und Gewohnheiten zu wiederholen.\n\n&#x1F4C5; 4. INTELLIGENTER KALENDER\nSiehe erledigte und bevorstehende Aufgaben im Kalender.\n\n&#x1F4BE; 5. SICHERES BACKUP\nExportiere oder importiere Backups, um deine Daten zu schützen.\n\nFange jetzt an und fokussiere dich besser auf deinen Tag.</string>
     <string name="lang_pt_br">🇧🇷  Português (BR)</string>
     <string name="lang_en_us">🇺🇸  English (US)</string>
     <string name="dlg_clear_all_title">ALLES LÖSCHEN</string>
@@ -37,7 +57,7 @@
     <string name="dlg_imported_title">IMPORTIERT</string>
     <string name="dlg_imported_message">Backup erfolgreich importiert! Die Listen und Aufgaben wurden hinzugefügt.</string>
     <string name="dlg_error_title">FEHLER</string>
-    <string name="dlg_import_error_message">Die Datei konnte nicht importiert werden. Bitte überprüfe, ob es sich um ein gültiges Planner Diário-Backup handelt.</string>
+    <string name="dlg_import_error_message">Die Datei konnte nicht importiert werden. Bitte überprüfe, ob es sich um ein gültiges Daily Planner-Backup handelt.</string>
     <string name="dark_mode_label">Dunkler Modus</string>
     <string name="light_mode_label">Heller Modus</string>
 
@@ -75,4 +95,3 @@
     <string name="legend_completed">Abgeschlossen</string>
     <string name="legend_scheduled">Geplant</string>
 </resources>
-

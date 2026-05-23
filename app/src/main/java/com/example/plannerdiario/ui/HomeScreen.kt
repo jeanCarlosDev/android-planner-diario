@@ -47,9 +47,13 @@ import com.example.plannerdiario.R
 import com.example.plannerdiario.data.LanguagePreferences
 import com.example.plannerdiario.ui.components.AddListDialog
 import com.example.plannerdiario.ui.components.AddTaskDialog
+import com.example.plannerdiario.ui.components.AdBannerView
 import com.example.plannerdiario.ui.components.CustomDatePickerDialog
+import com.example.plannerdiario.ui.components.DataManagementDialog
 import com.example.plannerdiario.ui.components.LanguagePickerDialog
+import com.example.plannerdiario.ui.components.availableLanguages
 import com.example.plannerdiario.ui.components.ShapeIcon
+import com.example.plannerdiario.ui.components.UsageSuggestionDialog
 import com.example.plannerdiario.ui.components.TaskItem
 import com.example.plannerdiario.ui.theme.*
 import kotlinx.coroutines.launch
@@ -65,7 +69,10 @@ fun HomeScreen(
     viewModel: PlannerViewModel,
     currentLanguageTag: String = LanguagePreferences.DEFAULT_TAG,
     onToggleDark: () -> Unit = {},
-    onChangeLanguage: (String) -> Unit = {}
+    onChangeLanguage: (String) -> Unit = {},
+    adsRemoved: Boolean = false,
+    onRemoveAds: () -> Unit = {},
+    onInteraction: () -> Unit = {}
 ) {
     val appColors = LocalAppColors.current
     val context   = LocalContext.current
@@ -87,6 +94,9 @@ fun HomeScreen(
     var showImportError      by remember { mutableStateOf(false) }
     var showImportSuccess    by remember { mutableStateOf(false) }
     var showLanguagePicker   by remember { mutableStateOf(false) }
+    var showUsageGuide       by remember { mutableStateOf(false) }
+    var showDataManagement   by remember { mutableStateOf(false) }
+    var showRemoveAdsDialog  by remember { mutableStateOf(false) }
     var pendingExportJson    by remember { mutableStateOf<String?>(null) }
 
     val isTablet = LocalConfiguration.current.screenWidthDp >= 600
@@ -137,7 +147,7 @@ fun HomeScreen(
             selectedDate   = selectedDate,
             completedDates = completedDates,
             scheduledDates = scheduledDates,
-            onDateSelected = { viewModel.selectDate(it) },
+            onDateSelected = { viewModel.selectDate(it); onInteraction() },
             onDismiss      = { showDatePicker = false }
         )
     }
@@ -147,6 +157,7 @@ fun HomeScreen(
             onConfirm = { name, color, shape ->
                 viewModel.addList(name, color, shape)
                 showAddListDialog = false
+                onInteraction()
             }
         )
     }
@@ -156,6 +167,7 @@ fun HomeScreen(
             onConfirm = { title, desc, uri, type, name, isScheduled, repeatDays ->
                 viewModel.addTask(title, desc, uri, type, name, isScheduled, repeatDays)
                 showAddTaskDialog = false
+                onInteraction()
             }
         )
     }
@@ -165,6 +177,51 @@ fun HomeScreen(
             currentTag = currentLanguageTag,
             onSelect   = { tag -> onChangeLanguage(tag) },
             onDismiss  = { showLanguagePicker = false }
+        )
+    }
+
+    if (showUsageGuide) {
+        UsageSuggestionDialog(onDismiss = { showUsageGuide = false })
+    }
+
+    if (showDataManagement) {
+        DataManagementDialog(
+            onDismiss = { showDataManagement = false },
+            onExport  = {
+                viewModel.exportBackup { json ->
+                    pendingExportJson = json
+                    val dateStr = SimpleDateFormat("yyyyMMdd_HHmm", Locale.getDefault()).format(Date())
+                    exportLauncher.launch("planner_backup_$dateStr.json")
+                }
+            },
+            onImport  = {
+                importLauncher.launch(arrayOf("application/json", "text/plain", "*/*"))
+            },
+            onClearAll = {
+                viewModel.clearAll()
+            },
+            onGetBackupJson = { callback ->
+                viewModel.exportBackup { json -> callback(json) }
+            },
+            onImportJson = { json, callback ->
+                viewModel.importBackup(json, callback)
+            }
+        )
+    }
+
+    // ── Diálogo: Remover Anúncios ─────────────────────────────────────────
+    if (showRemoveAdsDialog) {
+        AppConfirmDialog(
+            title        = stringResource(R.string.dlg_remove_ads_title),
+            message      = stringResource(R.string.dlg_remove_ads_message),
+            confirmLabel = stringResource(R.string.btn_purchase),
+            onConfirm    = {
+                showRemoveAdsDialog = false
+                onRemoveAds()
+            },
+            onDismiss    = { showRemoveAdsDialog = false },
+            appColors    = appColors,
+            destructive  = false
         )
     }
 
@@ -260,7 +317,7 @@ fun HomeScreen(
                             .clickable { showOptionsMenu = true },
                         contentAlignment = Alignment.Center
                     ) {
-                        Icon(Icons.Default.GridView, null, tint = Color.White, modifier = Modifier.size(22.dp))
+                        Icon(Icons.Default.Settings, null, tint = Color.White, modifier = Modifier.size(22.dp))
                     }
 
                     // ── Menu de opções ────────────────────────────────────
@@ -268,41 +325,18 @@ fun HomeScreen(
                         expanded = showOptionsMenu,
                         onDismissRequest = { showOptionsMenu = false }
                     ) {
-                        // Limpar tudo
+                        // Gerenciar Dados
                         DropdownMenuItem(
-                            text = { Text(stringResource(R.string.menu_clear_all), color = Color(0xFFE53935), fontWeight = FontWeight.Medium) },
+                            text = { Text(stringResource(R.string.menu_manage_data), fontWeight = FontWeight.Medium) },
                             leadingIcon = {
-                                Icon(Icons.Default.DeleteForever, null,
-                                    tint = Color(0xFFE53935), modifier = Modifier.size(20.dp))
+                                Icon(Icons.Default.Storage, null, modifier = Modifier.size(20.dp))
                             },
-                            onClick = { showOptionsMenu = false; showClearConfirm = true }
-                        )
-                        HorizontalDivider()
-                        // Exportar backup
-                        DropdownMenuItem(
-                            text = { Text(stringResource(R.string.menu_export_backup), fontWeight = FontWeight.Medium) },
-                            leadingIcon = {
-                                Icon(Icons.Default.Upload, null, modifier = Modifier.size(20.dp))
+                            trailingIcon = {
+                                Icon(Icons.Default.ChevronRight, null,
+                                    modifier = Modifier.size(18.dp),
+                                    tint = appColors.ink.copy(alpha = 0.4f))
                             },
-                            onClick = {
-                                showOptionsMenu = false
-                                viewModel.exportBackup { json ->
-                                    pendingExportJson = json
-                                    val dateStr = SimpleDateFormat("yyyyMMdd_HHmm", Locale.getDefault()).format(Date())
-                                    exportLauncher.launch("planner_backup_$dateStr.json")
-                                }
-                            }
-                        )
-                        // Importar backup
-                        DropdownMenuItem(
-                            text = { Text(stringResource(R.string.menu_import_backup), fontWeight = FontWeight.Medium) },
-                            leadingIcon = {
-                                Icon(Icons.Default.Download, null, modifier = Modifier.size(20.dp))
-                            },
-                            onClick = {
-                                showOptionsMenu = false
-                                importLauncher.launch(arrayOf("application/json", "text/plain", "*/*"))
-                            }
+                            onClick = { showOptionsMenu = false; showDataManagement = true }
                         )
                         HorizontalDivider()
                         // ── Idioma ─────────────────────────────────────────
@@ -317,11 +351,8 @@ fun HomeScreen(
                                         fontWeight = FontWeight.Medium
                                     )
                                     // badge com a bandeira do idioma atual
-                                    val currentFlag = when (currentLanguageTag) {
-                                        LanguagePreferences.TAG_PT_BR -> "🇧🇷"
-                                        LanguagePreferences.TAG_EN_US -> "🇺🇸"
-                                        else -> "🌐"
-                                    }
+                                    val currentFlag = availableLanguages
+                                        .firstOrNull { it.tag == currentLanguageTag }?.flag ?: "🌐"
                                     Text(
                                         currentFlag,
                                         style = MaterialTheme.typography.bodyLarge
@@ -341,20 +372,74 @@ fun HomeScreen(
                                 showLanguagePicker = true
                             }
                         )
+                        // ── Guia Rápido ────────────────────────────────────
+                        DropdownMenuItem(
+                            text = {
+                                Text(
+                                    stringResource(R.string.menu_usage_suggestion),
+                                    fontWeight = FontWeight.Medium
+                                )
+                            },
+                            leadingIcon = {
+                                Icon(Icons.Default.Lightbulb, null, modifier = Modifier.size(20.dp))
+                            },
+                            trailingIcon = {
+                                Icon(Icons.Default.ChevronRight, null,
+                                    modifier = Modifier.size(18.dp),
+                                    tint = appColors.ink.copy(alpha = 0.4f))
+                            },
+                            onClick = {
+                                showOptionsMenu = false
+                                showUsageGuide = true
+                            }
+                        )
+                        HorizontalDivider()
+                        // ── Remover Anúncios ───────────────────────────────
+                        DropdownMenuItem(
+                            text = {
+                                Text(
+                                    if (adsRemoved) stringResource(R.string.menu_ads_removed)
+                                    else            stringResource(R.string.menu_remove_ads),
+                                    fontWeight = FontWeight.Medium,
+                                    color = if (adsRemoved) appColors.ink.copy(alpha = 0.5f) else appColors.ink
+                                )
+                            },
+                            leadingIcon = {
+                                Icon(
+                                    if (adsRemoved) Icons.Default.CheckCircle else Icons.Default.MoneyOff,
+                                    null,
+                                    modifier = Modifier.size(20.dp),
+                                    tint = if (adsRemoved) appColors.ink.copy(alpha = 0.5f) else appColors.ink
+                                )
+                            },
+                            trailingIcon = {
+                                if (!adsRemoved) {
+                                    Icon(Icons.Default.ChevronRight, null,
+                                        modifier = Modifier.size(18.dp),
+                                        tint = appColors.ink.copy(alpha = 0.4f))
+                                }
+                            },
+                            onClick = {
+                                showOptionsMenu = false
+                                if (!adsRemoved) showRemoveAdsDialog = true
+                            },
+                            enabled = !adsRemoved
+                        )
                     }
                 }
 
-                Spacer(Modifier.weight(1f))
-
                 Text(
                     text = stringResource(R.string.app_title),
+                    modifier = Modifier.weight(1f),
                     style = MaterialTheme.typography.titleSmall,
                     fontWeight = FontWeight.Bold,
-                    letterSpacing = 3.sp,
-                    color = appColors.ink
+                    letterSpacing = 2.sp,
+                    color = appColors.ink,
+                    textAlign = TextAlign.Center,
+                    softWrap = true,
+                    maxLines = 2,
+                    overflow = TextOverflow.Clip
                 )
-
-                Spacer(Modifier.weight(1f))
 
                 // Dark mode toggle button (right) – mesmo estilo do botão esquerdo
                 Box(
@@ -739,10 +824,11 @@ fun HomeScreen(
                         TaskItem(
                             task      = task,
                             listColor = listColor,
-                            onToggle  = { viewModel.toggleTask(task) },
-                            onDelete  = { viewModel.deleteTask(task) },
+                            onToggle  = { viewModel.toggleTask(task); onInteraction() },
+                            onDelete  = { viewModel.deleteTask(task); onInteraction() },
                             onEdit    = { title, desc, uri, type, name, _, _ ->
                                 viewModel.updateTask(task, title, desc, uri, type, name)
+                                onInteraction()
                             }
                         )
                     }
@@ -754,7 +840,7 @@ fun HomeScreen(
         if (selectedList != null) {
             Box(modifier = Modifier
                 .align(Alignment.BottomCenter)
-                .padding(bottom = 24.dp)
+                .padding(bottom = if (adsRemoved) 24.dp else 76.dp)
             ) {
                 Box(
                     modifier = Modifier
@@ -783,6 +869,13 @@ fun HomeScreen(
                     }
                 }
             }
+        }
+
+        // ── Banner de anúncio (rodapé fixo) ──────────────────────────────
+        if (!adsRemoved) {
+            AdBannerView(
+                modifier = Modifier.align(Alignment.BottomCenter)
+            )
         }
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OrgDay</string>
+    <string name="app_name">Daily Planner</string>
 
     <!-- General -->
     <string name="btn_ok">OK</string>
@@ -29,15 +29,35 @@
     <string name="menu_export_backup">Exportar copia de seguridad</string>
     <string name="menu_import_backup">Importar copia de seguridad</string>
     <string name="menu_language">Idioma</string>
-    <string name="lang_pt_br">🇧🇷  Português (BR)</string>
-    <string name="lang_en_us">🇺🇸  English (US)</string>
+    <string name="menu_usage_suggestion">Consejos de Uso</string>
+    <string name="menu_manage_data">Gestionar Datos</string>
+    <string name="dlg_manage_data_title">GESTIONAR DATOS</string>
+    <string name="section_local_data">DATOS LOCALES</string>
+    <string name="section_google_drive">GOOGLE DRIVE</string>
+    <string name="btn_connect_google">Conectar cuenta Google</string>
+    <string name="btn_disconnect_google">Desconectar</string>
+    <string name="btn_backup_drive">Guardar en Drive</string>
+    <string name="btn_restore_drive">Restaurar de Drive</string>
+    <string name="label_not_connected">Sin cuenta vinculada</string>
+    <string name="label_connected_as">Conectado como</string>
+    <string name="drive_backup_success">¡Backup guardado en Drive con éxito!</string>
+    <string name="drive_restore_success">¡Datos restaurados de Drive con éxito!</string>
+    <string name="drive_backup_error">Error al guardar en Drive. Inténtalo de nuevo.</string>
+    <string name="drive_restore_error">Error al restaurar de Drive. Inténtalo de nuevo.</string>
+    <string name="drive_no_backup_found">No se encontró backup en Drive.</string>
+    <string name="drive_signin_error">Error al conectar con Google.</string>
+    <string name="loading">Espera…</string>
+    <string name="dlg_usage_title">CÓMO USAR DAILY PLANNER</string>
+    <string name="usage_content">&#x1F4CB; ORGANIZA TUS IDEAS\n\n&#x1F5C2; 1. CREA TUS LISTAS\nAgrupa por tema (Trabajo, Estudios, Personal) y usa colores para encontrarlas rápido.\n\n&#x2705; 2. AGREGA TAREAS\nToca \"Nueva Tarea\", escribe un título y listo.\n\n&#x1F501; 3. TAREAS PROGRAMADAS\nActiva \"Tarea Programada\" para recordar y repetir hábitos.\n\n&#x1F4C5; 4. CALENDARIO INTELIGENTE\nVisualiza tareas completadas y próximas en el calendario.\n\n&#x1F4BE; 5. COPIA DE SEGURIDAD\nExporta o importa copias de seguridad para proteger tus datos.\n\nEmpieza ahora y gana más enfoque en tu día.</string>
+    <string name="lang_pt_br">  Português (BR)</string>
+    <string name="lang_en_us">  English (US)</string>
     <string name="dlg_clear_all_title">ELIMINAR TODO</string>
     <string name="dlg_clear_all_message">Esta acción eliminará permanentemente TODAS las listas y tareas.\n\nEsta operación no se puede deshacer. ¿Estás seguro?</string>
     <string name="btn_clear_all_confirm">Eliminar todo</string>
     <string name="dlg_imported_title">IMPORTADO</string>
     <string name="dlg_imported_message">¡Copia de seguridad importada correctamente! Las listas y tareas han sido añadidas.</string>
     <string name="dlg_error_title">ERROR</string>
-    <string name="dlg_import_error_message">No se pudo importar el archivo. Verifica si es una copia de seguridad válida de Planner Diário.</string>
+    <string name="dlg_import_error_message">No se pudo importar el archivo. Verifica si es una copia de seguridad válida de Daily Planner.</string>
     <string name="dark_mode_label">Modo oscuro</string>
     <string name="light_mode_label">Modo claro</string>
 
@@ -75,4 +95,3 @@
     <string name="legend_completed">Completadas</string>
     <string name="legend_scheduled">Programadas</string>
 </resources>
-
