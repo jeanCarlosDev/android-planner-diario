@@ -1,6 +1,7 @@
 ﻿package com.example.plannerdiario
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -82,7 +83,11 @@ class MainActivity : AppCompatActivity() {
                             }
                         },
                         adsRemoved  = adsRemoved,
-                        onRemoveAds = { billingManager.launchPurchaseFlow(this@MainActivity) },
+                        onRemoveAds = {
+                            billingManager.launchPurchaseFlow(this@MainActivity) { errorMsg ->
+                                Toast.makeText(this@MainActivity, errorMsg, Toast.LENGTH_LONG).show()
+                            }
+                        },
                         // Só rastreia interações se o usuário não removeu os anúncios
                         onInteraction = {
                             if (!adsRemoved) {

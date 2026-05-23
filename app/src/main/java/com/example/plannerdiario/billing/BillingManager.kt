@@ -32,6 +32,10 @@ class BillingManager(
     private val _adsRemoved = MutableStateFlow(adPreferences.isAdsRemoved())
     val adsRemoved: StateFlow<Boolean> = _adsRemoved
 
+    /** true quando o produto foi carregado com sucesso do Play Store */
+    private val _isPurchaseAvailable = MutableStateFlow(false)
+    val isPurchaseAvailable: StateFlow<Boolean> = _isPurchaseAvailable
+
     private var productDetails: ProductDetails? = null
 
     private val billingClient: BillingClient = BillingClient.newBuilder(context)
@@ -80,6 +84,9 @@ class BillingManager(
         val result = billingClient.queryProductDetails(params)
         if (result.billingResult.responseCode == BillingClient.BillingResponseCode.OK) {
             productDetails = result.productDetailsList?.firstOrNull()
+            _isPurchaseAvailable.value = productDetails != null
+        } else {
+            _isPurchaseAvailable.value = false
         }
     }
 
@@ -100,13 +107,20 @@ class BillingManager(
 
     // ── Iniciar fluxo de compra ───────────────────────────────────────────────
 
-    fun launchPurchaseFlow(activity: Activity) {
+    fun launchPurchaseFlow(activity: Activity, onError: (String) -> Unit = {}) {
         if (!billingClient.isReady) {
             connect()
+            onError("Serviço de compras não disponível. Tente novamente em instantes.")
             return
         }
 
-        val details = productDetails ?: return  // produto ainda carregando
+        val details = productDetails
+        if (details == null) {
+            // Tenta recarregar os detalhes do produto e informa o usuário
+            scope.launch(Dispatchers.IO) { queryProductDetails() }
+            onError("Produto não encontrado. Verifique se o app está atualizado na Play Store.")
+            return
+        }
 
         val flowParams = BillingFlowParams.newBuilder()
             .setProductDetailsParamsList(
@@ -154,4 +168,3 @@ class BillingManager(
         if (billingClient.isReady) billingClient.endConnection()
     }
 }
-
