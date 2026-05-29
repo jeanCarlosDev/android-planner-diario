@@ -1,4 +1,4 @@
-﻿package com.example.plannerdiario.data
+﻿package com.jsjstudios.dailyplanner.data
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
@@ -27,5 +27,7 @@ data class Task(
     val attachmentName: String? = null,   // nome exibido
     val isScheduled: Boolean = false,     // tarefa programada (vinculada a uma data)
     val scheduledDate: String? = null,    // data no formato "yyyy-MM-dd"
+    val isRecurring: Boolean = false,     // tarefa recorrente (aparece todo dia)
+    val recurrenceInterval: String? = null, // "ALWAYS", "WEEKLY", "BIWEEKLY", "MONTHLY"
     val createdAt: Long = System.currentTimeMillis()
 )

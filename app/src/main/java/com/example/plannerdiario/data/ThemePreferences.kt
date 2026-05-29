@@ -1,4 +1,4 @@
-package com.example.plannerdiario.data
+﻿package com.jsjstudios.dailyplanner.data
 
 import android.content.Context
 import androidx.datastore.core.DataStore

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Daily Planner</string>
 
@@ -49,8 +49,8 @@
     <string name="loading">Harap tunggu…</string>
     <string name="dlg_usage_title">CARA MENGGUNAKAN DAILY PLANNER</string>
     <string name="usage_content">&#x1F4CB; ATUR IDE ANDA\n\n&#x1F5C2; 1. BUAT DAFTAR ANDA\nKelompokkan berdasarkan tema (Kerja, Belajar, Pribadi) dan gunakan warna untuk menemukan dengan cepat.\n\n&#x2705; 2. TAMBAHKAN TUGAS\nKetuk \"Tugas Baru\", masukkan judul dan selesai.\n\n&#x1F501; 3. TUGAS TERJADWAL\nAktifkan \"Tugas Terjadwal\" untuk mengatur pengingat dan mengulang kebiasaan.\n\n&#x1F4C5; 4. KALENDER CERDAS\nLihat tugas yang selesai dan mendatang di kalender.\n\n&#x1F4BE; 5. CADANGAN AMAN\nEkspor atau impor cadangan untuk menjaga data Anda.\n\nMulai sekarang dan raih fokus lebih di hari Anda.</string>
-    <string name="lang_pt_br">🇧🇷  Português (BR)</string>
-    <string name="lang_en_us">🇺🇸  English (US)</string>
+    <string name="lang_pt_br">  Português (BR)</string>
+    <string name="lang_en_us">  English (US)</string>
     <string name="dlg_clear_all_title">HAPUS SEMUA</string>
     <string name="dlg_clear_all_message">Tindakan ini akan menghapus SEMUA daftar dan tugas secara permanen.\n\nOperasi ini tidak dapat dibatalkan. Apakah Anda yakin?</string>
     <string name="btn_clear_all_confirm">Hapus semua</string>
@@ -63,8 +63,8 @@
     <string name="menu_remove_ads">Hapus iklan</string>
     <string name="menu_ads_removed">✓ Tanpa iklan</string>
     <string name="dlg_remove_ads_title">HAPUS IKLAN</string>
-    <string name="dlg_remove_ads_message">Hapus semua iklan dari aplikasi hanya dengan %s. Pembelian sekali seumur hidup — berlaku selamanya di perangkat ini.</string>
-    <string name="btn_purchase">Beli %s</string>
+    <string name="dlg_remove_ads_message">Nikmati aplikasi tanpa gangguan. Hapus semua iklan secara permanen dengan satu pembelian.</string>
+    <string name="btn_purchase">Hapus Iklan</string>
 
     <!-- AddTaskDialog -->
     <string name="dlg_new_task_title">TUGAS BARU</string>
@@ -81,6 +81,19 @@
     <string name="label_repeat_days">Ulangi berapa hari?</string>
     <string name="hint_repeat_days">Jumlah hari</string>
     <string name="attachment_fallback">berkas</string>
+    <!-- Task type selector -->
+    <string name="label_task_type">JENIS TUGAS</string>
+    <string name="task_type_default">Standar</string>
+    <string name="task_type_default_subtitle">Muncul setiap hari</string>
+    <string name="task_type_scheduled">Terjadwal</string>
+    <string name="task_type_scheduled_subtitle">Terhubung ke tanggal tertentu</string>
+    <string name="task_type_recurring">Berulang</string>
+    <string name="task_type_recurring_subtitle">Muncul setiap hari dan harus dicentang</string>
+    <string name="label_recurrence_interval">Interval</string>
+    <string name="interval_always">Selalu</string>
+    <string name="interval_weekly">Mingguan</string>
+    <string name="interval_biweekly">Dua mingguan</string>
+    <string name="interval_monthly">Bulanan</string>
 
     <!-- TaskItem -->
     <string name="btn_edit">Edit</string>
@@ -92,6 +105,9 @@
     <string name="dlg_new_list_title">DAFTAR BARU</string>
     <string name="hint_list_name">Nama daftar…</string>
     <string name="lbl_auto">otomatis</string>
+    <string name="dlg_delete_list_title">HAPUS DAFTAR</string>
+    <string name="dlg_delete_list_message">Daftar \"%1$s\" dan SEMUA tugas yang terkait akan dihapus secara permanen.\n\nTindakan ini tidak dapat dibatalkan.</string>
+    <string name="btn_delete_list">Hapus daftar</string>
 
     <!-- CustomDatePickerDialog -->
     <string name="dlg_select_date_title">PILIH TANGGAL</string>
@@ -99,4 +115,5 @@
     <string name="btn_next_month">Bulan berikutnya</string>
     <string name="legend_completed">Selesai</string>
     <string name="legend_scheduled">Terjadwal</string>
+    <string name="legend_recurring">Berulang</string>
 </resources>

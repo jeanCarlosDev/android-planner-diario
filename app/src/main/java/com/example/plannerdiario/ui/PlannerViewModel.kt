@@ -1,10 +1,10 @@
-﻿package com.example.plannerdiario.ui
+﻿package com.jsjstudios.dailyplanner.ui
 import androidx.lifecycle.*
-import com.example.plannerdiario.data.BackupManager
-import com.example.plannerdiario.data.PlannerRepository
-import com.example.plannerdiario.data.Task
-import com.example.plannerdiario.data.TaskList
-import com.example.plannerdiario.data.listPresetOptions
+import com.jsjstudios.dailyplanner.data.BackupManager
+import com.jsjstudios.dailyplanner.data.PlannerRepository
+import com.jsjstudios.dailyplanner.data.Task
+import com.jsjstudios.dailyplanner.data.TaskList
+import com.jsjstudios.dailyplanner.data.listPresetOptions
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -24,6 +24,14 @@ class PlannerViewModel(private val repository: PlannerRepository) : ViewModel() 
         Pair(id, date)
     }.flatMapLatest { (listId, date) ->
         if (listId != null) repository.getTasksForListAndDate(listId, date.toString())
+            .map { list ->
+                list.map { task ->
+                    // Tarefas recorrentes: "concluída" é apenas para o dia em questão
+                    if (task.isRecurring && task.completedDate != date.toString()) {
+                        task.copy(isCompleted = false, completedDate = null)
+                    } else task
+                }
+            }
         else flowOf(emptyList())
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
@@ -38,6 +46,11 @@ class PlannerViewModel(private val repository: PlannerRepository) : ViewModel() 
             list.mapNotNull { runCatching { LocalDate.parse(it) }.getOrNull() }.toSet()
         } else flowOf(emptySet())
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptySet())
+
+    val recurringTasks: StateFlow<List<Task>> = _selectedListId.flatMapLatest { id ->
+        if (id != null) repository.getRecurringTasks(id)
+        else flowOf(emptyList())
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
     init {
         viewModelScope.launch {
             taskLists.collect { lists ->
@@ -48,6 +61,8 @@ class PlannerViewModel(private val repository: PlannerRepository) : ViewModel() 
         }
     }
     fun selectDate(date: LocalDate) { _selectedDate.value = date }
+    fun goToPreviousDay() { _selectedDate.value = _selectedDate.value.minusDays(1) }
+    fun goToNextDay()     { _selectedDate.value = _selectedDate.value.plusDays(1) }
     fun selectList(listId: Long) { _selectedListId.value = listId }
     fun addList(name: String, colorHex: String? = null, shape: String? = null) {
         viewModelScope.launch {
@@ -112,15 +127,47 @@ class PlannerViewModel(private val repository: PlannerRepository) : ViewModel() 
         attachmentType: String? = null,
         attachmentName: String? = null,
         isScheduled: Boolean = false,
-        repeatDays: Int = 1
+        repeatDays: Int = 1,
+        isRecurring: Boolean = false,
+        recurrenceInterval: String? = null
     ) {
         val listId = _selectedListId.value ?: return
         val currentDate = _selectedDate.value
         viewModelScope.launch {
-            if (isScheduled) {
-                val days = repeatDays.coerceAtLeast(1)
-                repeat(days) { dayOffset ->
-                    val taskDate = currentDate.plusDays(dayOffset.toLong())
+            when {
+                isRecurring -> {
+                    repository.insertTask(
+                        Task(
+                            listId             = listId,
+                            title              = title,
+                            description        = description,
+                            attachmentUri      = attachmentUri,
+                            attachmentType     = attachmentType,
+                            attachmentName     = attachmentName,
+                            isRecurring        = true,
+                            recurrenceInterval = recurrenceInterval
+                        )
+                    )
+                }
+                isScheduled -> {
+                    val days = repeatDays.coerceAtLeast(1)
+                    repeat(days) { dayOffset ->
+                        val taskDate = currentDate.plusDays(dayOffset.toLong())
+                        repository.insertTask(
+                            Task(
+                                listId         = listId,
+                                title          = title,
+                                description    = description,
+                                attachmentUri  = attachmentUri,
+                                attachmentType = attachmentType,
+                                attachmentName = attachmentName,
+                                isScheduled    = true,
+                                scheduledDate  = taskDate.toString()
+                            )
+                        )
+                    }
+                }
+                else -> {
                     repository.insertTask(
                         Task(
                             listId         = listId,
@@ -128,23 +175,10 @@ class PlannerViewModel(private val repository: PlannerRepository) : ViewModel() 
                             description    = description,
                             attachmentUri  = attachmentUri,
                             attachmentType = attachmentType,
-                            attachmentName = attachmentName,
-                            isScheduled    = true,
-                            scheduledDate  = taskDate.toString()
+                            attachmentName = attachmentName
                         )
                     )
                 }
-            } else {
-                repository.insertTask(
-                    Task(
-                        listId         = listId,
-                        title          = title,
-                        description    = description,
-                        attachmentUri  = attachmentUri,
-                        attachmentType = attachmentType,
-                        attachmentName = attachmentName
-                    )
-                )
             }
         }
     }

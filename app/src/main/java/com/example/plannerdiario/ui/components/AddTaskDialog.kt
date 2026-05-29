@@ -1,4 +1,4 @@
-﻿package com.example.plannerdiario.ui.components
+﻿package com.jsjstudios.dailyplanner.ui.components
 
 import android.content.Context
 import android.net.Uri
@@ -33,15 +33,17 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
-import com.example.plannerdiario.R
+import com.jsjstudios.dailyplanner.R
 import kotlinx.coroutines.delay
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
-import com.example.plannerdiario.data.Task
-import com.example.plannerdiario.ui.theme.*
+import com.jsjstudios.dailyplanner.data.Task
+import com.jsjstudios.dailyplanner.ui.theme.*
+
+enum class TaskType { DEFAULT, SCHEDULED, RECURRING }
 
 @Composable
 fun AddTaskDialog(
@@ -54,16 +56,17 @@ fun AddTaskDialog(
         attachType: String?,
         attachName: String?,
         isScheduled: Boolean,
-        repeatDays: Int
+        repeatDays: Int,
+        isRecurring: Boolean,
+        recurrenceInterval: String?
     ) -> Unit
 ) {
     Dialog(onDismissRequest = onDismiss) {
-        // wrap onConfirm to make the lambda type explicit and avoid overload ambiguity
         AddTaskDialogContent(
             initialTask = initialTask,
             onDismiss   = onDismiss,
-            onConfirm   = { title, description, attachUri, attachType, attachName, isScheduled, repeatDays ->
-                onConfirm(title, description, attachUri, attachType, attachName, isScheduled, repeatDays)
+            onConfirm   = { title, description, attachUri, attachType, attachName, isScheduled, repeatDays, isRecurring, recurrenceInterval ->
+                onConfirm(title, description, attachUri, attachType, attachName, isScheduled, repeatDays, isRecurring, recurrenceInterval)
             }
         )
     }
@@ -83,8 +86,10 @@ fun AddTaskDialogContent(
         attachType: String?,
         attachName: String?,
         isScheduled: Boolean,
-        repeatDays: Int
-    ) -> Unit = { _, _, _, _, _, _, _ -> }
+        repeatDays: Int,
+        isRecurring: Boolean,
+        recurrenceInterval: String?
+    ) -> Unit = { _, _, _, _, _, _, _, _, _ -> }
 ) {
     val isEditing = initialTask != null
     val context = LocalContext.current
@@ -101,8 +106,15 @@ fun AddTaskDialogContent(
     var linkUrl         by remember { mutableStateOf(
         if (initialTask?.attachmentType == "LINK") initialTask.attachmentUri ?: "" else ""
     ) }
-    var isScheduled     by remember { mutableStateOf(initialTask?.isScheduled ?: false) }
     var repeatDaysText  by remember { mutableStateOf("1") }
+    var taskType        by remember { mutableStateOf(
+        when {
+            initialTask?.isRecurring == true -> TaskType.RECURRING
+            initialTask?.isScheduled == true -> TaskType.SCHEDULED
+            else -> TaskType.DEFAULT
+        }
+    ) }
+    var recurrenceInterval by remember { mutableStateOf("ALWAYS") }
     var requestLinkFocus by remember { mutableStateOf(false) }
 
     val linkFocusRequester = remember { FocusRequester() }
@@ -388,48 +400,50 @@ fun AddTaskDialogContent(
 
                     }
 
-                    // ── Tarefa Programada ──────────────────────────────────
+                    // ── Tipo de Tarefa ─────────────────────────────────────
                     if (!isEditing) {
-                        Row(
+                        Column(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .border(2.dp, PinkVivid.copy(alpha = 0.4f), RoundedCornerShape(8.dp))
                                 .clip(RoundedCornerShape(8.dp))
                                 .background(appColors.surface)
-                                .padding(horizontal = 14.dp, vertical = 4.dp),
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.SpaceBetween
+                                .padding(horizontal = 14.dp, vertical = 10.dp),
+                            verticalArrangement = Arrangement.spacedBy(4.dp)
                         ) {
-                            Column {
-                                Text(
-                                    stringResource(R.string.label_scheduled_task),
-                                    style = MaterialTheme.typography.bodyMedium,
-                                    fontWeight = FontWeight.SemiBold,
-                                    color = appColors.ink
-                                )
-                                Text(
-                                    stringResource(R.string.label_scheduled_subtitle),
-                                    style = MaterialTheme.typography.labelSmall,
-                                    color = appColors.ink.copy(alpha = 0.5f)
-                                )
-                            }
-                            Switch(
-                                checked = isScheduled,
-                                onCheckedChange = {
-                                    isScheduled = it
-                                    if (!it) repeatDaysText = "1"
-                                },
-                                colors = SwitchDefaults.colors(
-                                    checkedThumbColor = Color.White,
-                                    checkedTrackColor = PinkVivid,
-                                    uncheckedThumbColor = appColors.ink.copy(alpha = 0.5f),
-                                    uncheckedTrackColor = appColors.ink.copy(alpha = 0.15f)
-                                )
+                            Text(
+                                stringResource(R.string.label_task_type),
+                                style = MaterialTheme.typography.labelMedium,
+                                fontWeight = FontWeight.ExtraBold,
+                                letterSpacing = 1.sp,
+                                color = PinkVivid
+                            )
+                            Spacer(Modifier.height(4.dp))
+                            // Opção Padrão
+                            TaskTypeRadioRow(
+                                selected = taskType == TaskType.DEFAULT,
+                                title    = stringResource(R.string.task_type_default),
+                                subtitle = stringResource(R.string.task_type_default_subtitle),
+                                onClick  = { taskType = TaskType.DEFAULT }
+                            )
+                            // Opção Programada
+                            TaskTypeRadioRow(
+                                selected = taskType == TaskType.SCHEDULED,
+                                title    = stringResource(R.string.task_type_scheduled),
+                                subtitle = stringResource(R.string.task_type_scheduled_subtitle),
+                                onClick  = { taskType = TaskType.SCHEDULED }
+                            )
+                            // Opção Recorrente
+                            TaskTypeRadioRow(
+                                selected = taskType == TaskType.RECURRING,
+                                title    = stringResource(R.string.task_type_recurring),
+                                subtitle = stringResource(R.string.task_type_recurring_subtitle),
+                                onClick  = { taskType = TaskType.RECURRING }
                             )
                         }
 
-                        // Campo de repetição — aparece apenas quando programada
-                        if (isScheduled) {
+                        // Campo de repetição (apenas para Programada)
+                        if (taskType == TaskType.SCHEDULED) {
                             TextField(
                                 value = repeatDaysText,
                                 onValueChange = { newVal ->
@@ -437,35 +451,86 @@ fun AddTaskDialogContent(
                                         repeatDaysText = newVal
                                     }
                                 },
-                            placeholder = {
-                                Text(
-                                    stringResource(R.string.hint_repeat_days),
-                                    color = DarkInk.copy(alpha = 0.38f),
-                                    style = MaterialTheme.typography.bodyMedium
-                                )
-                            },
-                            label = {
-                                Text(
-                                    stringResource(R.string.label_repeat_days),
-                                    style = MaterialTheme.typography.labelSmall,
-                                    color = appColors.ink.copy(alpha = 0.6f)
-                                )
-                            },
-                                leadingIcon = {
-                                    Icon(
-                                        Icons.Default.Repeat, null,
-                                        modifier = Modifier.size(18.dp),
-                                        tint = PinkVivid
+                                placeholder = {
+                                    Text(
+                                        stringResource(R.string.hint_repeat_days),
+                                        color = DarkInk.copy(alpha = 0.38f),
+                                        style = MaterialTheme.typography.bodyMedium
                                     )
+                                },
+                                label = {
+                                    Text(
+                                        stringResource(R.string.label_repeat_days),
+                                        style = MaterialTheme.typography.labelSmall,
+                                        color = appColors.ink.copy(alpha = 0.6f)
+                                    )
+                                },
+                                leadingIcon = {
+                                    Icon(Icons.Default.Repeat, null,
+                                        modifier = Modifier.size(18.dp), tint = PinkVivid)
                                 },
                                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                                 singleLine = true,
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .border(2.dp, PinkVivid, RoundedCornerShape(8.dp)),
-                                shape = RoundedCornerShape(8.dp),
+                                shape  = RoundedCornerShape(8.dp),
                                 colors = styledTextFieldColors()
                             )
+                        }
+
+                        // Chips de intervalo (apenas para Recorrente)
+                        if (taskType == TaskType.RECURRING) {
+                            Column(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .border(2.dp, PinkVivid.copy(alpha = 0.4f), RoundedCornerShape(8.dp))
+                                    .clip(RoundedCornerShape(8.dp))
+                                    .background(appColors.surface)
+                                    .padding(horizontal = 14.dp, vertical = 10.dp),
+                                verticalArrangement = Arrangement.spacedBy(8.dp)
+                            ) {
+                                Text(
+                                    stringResource(R.string.label_recurrence_interval),
+                                    style = MaterialTheme.typography.labelSmall,
+                                    fontWeight = FontWeight.SemiBold,
+                                    color = appColors.ink.copy(alpha = 0.6f)
+                                )
+                                val intervals = listOf(
+                                    "ALWAYS"   to stringResource(R.string.interval_always),
+                                    "WEEKLY"   to stringResource(R.string.interval_weekly),
+                                    "BIWEEKLY" to stringResource(R.string.interval_biweekly),
+                                    "MONTHLY"  to stringResource(R.string.interval_monthly)
+                                )
+                                // Linha 1: Sempre + Semanal
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                                ) {
+                                    intervals.take(2).forEach { (value, label) ->
+                                        IntervalChip(
+                                            label    = label,
+                                            selected = recurrenceInterval == value,
+                                            modifier = Modifier.weight(1f),
+                                            onClick  = { recurrenceInterval = value }
+                                        )
+                                    }
+                                }
+                                // Linha 2: Quinzenal + Mensal
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                                ) {
+                                    intervals.drop(2).forEach { (value, label) ->
+                                        IntervalChip(
+                                            label    = label,
+                                            selected = recurrenceInterval == value,
+                                            modifier = Modifier.weight(1f),
+                                            onClick  = { recurrenceInterval = value }
+                                        )
+                                    }
+                                }
+                            }
                         }
                     }
 
@@ -495,13 +560,15 @@ fun AddTaskDialogContent(
                                     "LINK" -> linkUrl.trim().ifBlank { null }
                                     else   -> attachName
                                 }
-                                onConfirm(
-                                     title.trim(), description.trim(),
-                                     finalUri, if (finalUri != null) attachType else null,
-                                     finalName,
-                                     isScheduled,
-                                     repeatDaysText.toIntOrNull()?.coerceAtLeast(1) ?: 1
-                                 )
+                                 onConfirm(
+                                      title.trim(), description.trim(),
+                                      finalUri, if (finalUri != null) attachType else null,
+                                      finalName,
+                                      taskType == TaskType.SCHEDULED,
+                                      repeatDaysText.toIntOrNull()?.coerceAtLeast(1) ?: 1,
+                                      taskType == TaskType.RECURRING,
+                                      if (taskType == TaskType.RECURRING) recurrenceInterval else null
+                                  )
                             },
                             modifier = Modifier.fillMaxWidth(),
                             shape    = RoundedCornerShape(8.dp),
@@ -524,6 +591,81 @@ fun AddTaskDialogContent(
                 }
             }
         }
+}
+
+// ── Chip de intervalo de recorrência ──────────────────────────────────────────
+@Composable
+private fun IntervalChip(
+    label: String,
+    selected: Boolean,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
+) {
+    val appColors = LocalAppColors.current
+    Box(
+        modifier = modifier
+            .height(40.dp)
+            .border(
+                width = if (selected) 2.dp else 1.5.dp,
+                color = if (selected) appColors.ink else appColors.ink.copy(alpha = 0.25f),
+                shape = RoundedCornerShape(6.dp)
+            )
+            .clip(RoundedCornerShape(6.dp))
+            .background(if (selected) PinkVivid else appColors.surface)
+            .clickable { onClick() },
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text       = label,
+            style      = MaterialTheme.typography.bodySmall,
+            fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal,
+            color      = if (selected) Color.White else appColors.ink.copy(alpha = 0.7f),
+            maxLines   = 1
+        )
+    }
+}
+
+// ── Radio row para seleção de tipo de tarefa ─────────────────────────────────
+@Composable
+private fun TaskTypeRadioRow(
+    selected: Boolean,
+    title: String,
+    subtitle: String,
+    onClick: () -> Unit
+) {
+    val appColors = LocalAppColors.current
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(6.dp))
+            .clickable { onClick() }
+            .padding(vertical = 6.dp, horizontal = 2.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(10.dp)
+    ) {
+        RadioButton(
+            selected = selected,
+            onClick  = onClick,
+            colors   = RadioButtonDefaults.colors(
+                selectedColor   = PinkVivid,
+                unselectedColor = appColors.ink.copy(alpha = 0.4f)
+            ),
+            modifier = Modifier.size(20.dp)
+        )
+        Column {
+            Text(
+                title,
+                style      = MaterialTheme.typography.bodyMedium,
+                fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal,
+                color      = if (selected) PinkVivid else appColors.ink
+            )
+            Text(
+                subtitle,
+                style = MaterialTheme.typography.labelSmall,
+                color = appColors.ink.copy(alpha = 0.5f)
+            )
+        }
+    }
 }
 
 // ── Botão de anexo estilizado ─────────────────────────────────────────────────

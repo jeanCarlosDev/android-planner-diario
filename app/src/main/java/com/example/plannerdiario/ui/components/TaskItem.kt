@@ -1,4 +1,4 @@
-﻿package com.example.plannerdiario.ui.components
+﻿package com.jsjstudios.dailyplanner.ui.components
 
 import android.content.Intent
 import android.net.Uri
@@ -30,12 +30,12 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.res.stringResource
-import com.example.plannerdiario.R
-import com.example.plannerdiario.data.Task
-import com.example.plannerdiario.ui.theme.DarkInk
-import com.example.plannerdiario.ui.theme.LocalAppColors
-import com.example.plannerdiario.ui.theme.MintTeal
-import com.example.plannerdiario.ui.theme.PinkVivid
+import com.jsjstudios.dailyplanner.R
+import com.jsjstudios.dailyplanner.data.Task
+import com.jsjstudios.dailyplanner.ui.theme.DarkInk
+import com.jsjstudios.dailyplanner.ui.theme.LocalAppColors
+import com.jsjstudios.dailyplanner.ui.theme.MintTeal
+import com.jsjstudios.dailyplanner.ui.theme.PinkVivid
 
 @Composable
 fun TaskItem(
@@ -43,7 +43,7 @@ fun TaskItem(
     listColor: Color = DarkInk,
     onToggle: () -> Unit,
     onDelete: () -> Unit,
-    onEdit: (title: String, description: String, attachUri: String?, attachType: String?, attachName: String?, isScheduled: Boolean, repeatDays: Int) -> Unit
+    onEdit: (title: String, description: String, attachUri: String?, attachType: String?, attachName: String?, isScheduled: Boolean, repeatDays: Int, isRecurring: Boolean, recurrenceInterval: String?) -> Unit
 ) {
     val appColors = LocalAppColors.current
     val context = LocalContext.current
@@ -69,8 +69,8 @@ fun TaskItem(
         AddTaskDialog(
             initialTask = task,
             onDismiss   = { showEditDialog = false },
-            onConfirm   = { title, desc, uri, type, name, isScheduled, repeatDays ->
-                onEdit(title, desc, uri, type, name, isScheduled, repeatDays)
+            onConfirm   = { title, desc, uri, type, name, isScheduled, repeatDays, isRecurring, recurrenceInterval ->
+                onEdit(title, desc, uri, type, name, isScheduled, repeatDays, isRecurring, recurrenceInterval)
                 showEditDialog = false
             }
         )

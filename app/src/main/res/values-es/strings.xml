@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Daily Planner</string>
 
@@ -63,8 +63,8 @@
     <string name="menu_remove_ads">Eliminar anuncios</string>
     <string name="menu_ads_removed">✓ Sin anuncios</string>
     <string name="dlg_remove_ads_title">ELIMINAR ANUNCIOS</string>
-    <string name="dlg_remove_ads_message">Elimina todos los anuncios de la app por solo %s. Compra única y definitiva — válida para siempre en este dispositivo.</string>
-    <string name="btn_purchase">Comprar %s</string>
+    <string name="dlg_remove_ads_message">Disfruta la app sin interrupciones. Elimina todos los anuncios de forma permanente con una compra única.</string>
+    <string name="btn_purchase">Eliminar Anuncios</string>
 
     <!-- AddTaskDialog -->
     <string name="dlg_new_task_title">NUEVA TAREA</string>
@@ -81,6 +81,19 @@
     <string name="label_repeat_days">¿Repetir cuántos días?</string>
     <string name="hint_repeat_days">Número de días</string>
     <string name="attachment_fallback">archivo</string>
+    <!-- Task type selector -->
+    <string name="label_task_type">TIPO DE TAREA</string>
+    <string name="task_type_default">Estándar</string>
+    <string name="task_type_default_subtitle">Aparece todos los días</string>
+    <string name="task_type_scheduled">Programada</string>
+    <string name="task_type_scheduled_subtitle">Vinculada a una fecha específica</string>
+    <string name="task_type_recurring">Recurrente</string>
+    <string name="task_type_recurring_subtitle">Aparece cada día y debe marcarse</string>
+    <string name="label_recurrence_interval">Intervalo</string>
+    <string name="interval_always">Siempre</string>
+    <string name="interval_weekly">Semanal</string>
+    <string name="interval_biweekly">Quincenal</string>
+    <string name="interval_monthly">Mensual</string>
 
     <!-- TaskItem -->
     <string name="btn_edit">Editar</string>
@@ -92,6 +105,9 @@
     <string name="dlg_new_list_title">NUEVA LISTA</string>
     <string name="hint_list_name">Nombre de la lista…</string>
     <string name="lbl_auto">auto</string>
+    <string name="dlg_delete_list_title">ELIMINAR LISTA</string>
+    <string name="dlg_delete_list_message">La lista \"%1$s\" y TODAS las tareas vinculadas se eliminarán de forma permanente.\n\nEsta acción no se puede deshacer.</string>
+    <string name="btn_delete_list">Eliminar lista</string>
 
     <!-- CustomDatePickerDialog -->
     <string name="dlg_select_date_title">SELECCIONAR FECHA</string>
@@ -99,4 +115,5 @@
     <string name="btn_next_month">Mes siguiente</string>
     <string name="legend_completed">Completadas</string>
     <string name="legend_scheduled">Programadas</string>
+    <string name="legend_recurring">Recurrentes</string>
 </resources>

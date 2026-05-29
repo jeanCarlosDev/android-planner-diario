@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Daily Planner</string>
 
@@ -49,8 +49,8 @@
     <string name="loading">잠시만 기다려 주세요…</string>
     <string name="dlg_usage_title">Daily Planner 사용 방법</string>
     <string name="usage_content">&#x1F4CB; 아이디어 정리하기\n\n&#x1F5C2; 1. 목록 만들기\n업무, 학습, 개인 등으로 묶고 색으로 빠르게 구분하세요.\n\n&#x2705; 2. 작업 추가\n\"새 작업\"을 탭하고 제목을 입력하면 완료됩니다.\n\n&#x1F501; 3. 예약 작업\n\"예약된 작업\"을 켜서 알림을 설정하고 습관을 반복하세요.\n\n&#x1F4C5; 4. 스마트 캘린더\n캘린더에서 완료된 작업과 다가오는 작업을 확인하세요.\n\n&#x1F4BE; 5. 안전한 백업\n백업을 내보내거나 가져와 데이터를 보호하세요.\n\n지금 시작하고 하루에 더 집중하세요.</string>
-    <string name="lang_pt_br">🇧🇷  Português (BR)</string>
-    <string name="lang_en_us">🇺🇸  English (US)</string>
+    <string name="lang_pt_br">  Português (BR)</string>
+    <string name="lang_en_us">  English (US)</string>
     <string name="dlg_clear_all_title">모두 삭제</string>
     <string name="dlg_clear_all_message">이 작업은 모든 목록과 작업을 영구적으로 삭제합니다.\n\n이 작업은 취소할 수 없습니다. 계속하시겠습니까?</string>
     <string name="btn_clear_all_confirm">모두 삭제</string>
@@ -63,8 +63,8 @@
     <string name="menu_remove_ads">광고 제거</string>
     <string name="menu_ads_removed">✓ 광고 없음</string>
     <string name="dlg_remove_ads_title">광고 제거</string>
-    <string name="dlg_remove_ads_message">%s으로 앱의 모든 광고를 제거하세요. 단 한 번의 구매 — 이 기기에서 영구적으로 유효합니다.</string>
-    <string name="btn_purchase">구매 %s</string>
+    <string name="dlg_remove_ads_message">방해 없이 앱을 즐기세요. 단 한 번의 구매로 모든 광고를 영구적으로 제거하세요.</string>
+    <string name="btn_purchase">광고 제거</string>
 
     <!-- AddTaskDialog -->
     <string name="dlg_new_task_title">새 작업</string>
@@ -81,6 +81,19 @@
     <string name="label_repeat_days">며칠 동안 반복하시겠습니까?</string>
     <string name="hint_repeat_days">일수</string>
     <string name="attachment_fallback">파일</string>
+    <!-- Task type selector -->
+    <string name="label_task_type">작업 유형</string>
+    <string name="task_type_default">기본</string>
+    <string name="task_type_default_subtitle">매일 표시됩니다</string>
+    <string name="task_type_scheduled">예약됨</string>
+    <string name="task_type_scheduled_subtitle">특정 날짜에 연결됨</string>
+    <string name="task_type_recurring">반복</string>
+    <string name="task_type_recurring_subtitle">매일 표시되고 매일 체크해야 합니다</string>
+    <string name="label_recurrence_interval">간격</string>
+    <string name="interval_always">항상</string>
+    <string name="interval_weekly">매주</string>
+    <string name="interval_biweekly">격주</string>
+    <string name="interval_monthly">매월</string>
 
     <!-- TaskItem -->
     <string name="btn_edit">편집</string>
@@ -92,6 +105,9 @@
     <string name="dlg_new_list_title">새 목록</string>
     <string name="hint_list_name">목록 이름…</string>
     <string name="lbl_auto">자동</string>
+    <string name="dlg_delete_list_title">목록 삭제</string>
+    <string name="dlg_delete_list_message">\"%1$s\" 목록과 연결된 모든 작업이 영구적으로 삭제됩니다.\n\n이 작업은 되돌릴 수 없습니다.</string>
+    <string name="btn_delete_list">목록 삭제</string>
 
     <!-- CustomDatePickerDialog -->
     <string name="dlg_select_date_title">날짜 선택</string>
@@ -99,4 +115,5 @@
     <string name="btn_next_month">다음 달</string>
     <string name="legend_completed">완료됨</string>
     <string name="legend_scheduled">예약됨</string>
+    <string name="legend_recurring">반복</string>
 </resources>

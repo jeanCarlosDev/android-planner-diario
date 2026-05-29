@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Daily Planner</string>
 
@@ -49,8 +49,8 @@
     <string name="loading">しばらくお待ちください…</string>
     <string name="dlg_usage_title">Daily Plannerの使い方</string>
     <string name="usage_content">&#x1F4CB; アイデアを整理しましょう\n\n&#x1F5C2; 1. リストを作成\nテーマ別（仕事、学習、個人）にまとめ、色で素早く見つけましょう。\n\n&#x2705; 2. タスクを追加\n\"新しいタスク\"をタップしてタイトルを入力するだけです。\n\n&#x1F501; 3. スケジュールされたタスク\n\"スケジュールタスク\"を有効にしてリマインダーを設定しましょう。\n\n&#x1F4C5; 4. スマートカレンダー\nカレンダーで完了済みと今後のタスクを確認できます。\n\n&#x1F4BE; 5. 安全なバックアップ\nデータを守るためにバックアップをエクスポート・インポートしましょう。\n\n今すぐ始めて、毎日の集中力を高めましょう。</string>
-    <string name="lang_pt_br">🇧🇷  Português (BR)</string>
-    <string name="lang_en_us">🇺🇸  English (US)</string>
+    <string name="lang_pt_br">  Português (BR)</string>
+    <string name="lang_en_us">  English (US)</string>
     <string name="dlg_clear_all_title">すべて削除</string>
     <string name="dlg_clear_all_message">この操作により、すべてのリストとタスクが完全に削除されます。\n\nこの操作は元に戻せません。よろしいですか？</string>
     <string name="btn_clear_all_confirm">すべて削除</string>
@@ -63,8 +63,8 @@
     <string name="menu_remove_ads">広告を削除</string>
     <string name="menu_ads_removed">✓ 広告なし</string>
     <string name="dlg_remove_ads_title">広告を削除</string>
-    <string name="dlg_remove_ads_message">%sで広告をすべて削除します。一度きりの購入 — このデバイスで永久に有効です。</string>
-    <string name="btn_purchase">購入 %s</string>
+    <string name="dlg_remove_ads_message">中断なしでアプリをお楽しみください。一度の購入ですべての広告を永久に削除できます。</string>
+    <string name="btn_purchase">広告を削除</string>
 
     <!-- AddTaskDialog -->
     <string name="dlg_new_task_title">新しいタスク</string>
@@ -81,6 +81,19 @@
     <string name="label_repeat_days">何日間繰り返しますか？</string>
     <string name="hint_repeat_days">日数</string>
     <string name="attachment_fallback">ファイル</string>
+    <!-- Task type selector -->
+    <string name="label_task_type">タスクの種類</string>
+    <string name="task_type_default">標準</string>
+    <string name="task_type_default_subtitle">毎日表示されます</string>
+    <string name="task_type_scheduled">スケジュール</string>
+    <string name="task_type_scheduled_subtitle">特定の日付に紐付け</string>
+    <string name="task_type_recurring">繰り返し</string>
+    <string name="task_type_recurring_subtitle">毎日表示され、毎日チェックが必要</string>
+    <string name="label_recurrence_interval">間隔</string>
+    <string name="interval_always">常に</string>
+    <string name="interval_weekly">毎週</string>
+    <string name="interval_biweekly">隔週</string>
+    <string name="interval_monthly">毎月</string>
 
     <!-- TaskItem -->
     <string name="btn_edit">編集</string>
@@ -92,6 +105,9 @@
     <string name="dlg_new_list_title">新しいリスト</string>
     <string name="hint_list_name">リスト名…</string>
     <string name="lbl_auto">自動</string>
+    <string name="dlg_delete_list_title">リストを削除</string>
+    <string name="dlg_delete_list_message">リスト「%1$s」とすべての関連タスクが完全に削除されます。\n\nこの操作は元に戻せません。</string>
+    <string name="btn_delete_list">リストを削除</string>
 
     <!-- CustomDatePickerDialog -->
     <string name="dlg_select_date_title">日付を選択</string>
@@ -99,5 +115,6 @@
     <string name="btn_next_month">翌月</string>
     <string name="legend_completed">完了</string>
     <string name="legend_scheduled">予定済み</string>
+    <string name="legend_recurring">繰り返し</string>
 </resources>
 

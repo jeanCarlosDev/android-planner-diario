@@ -1,4 +1,4 @@
-package com.example.plannerdiario
+﻿package com.jsjstudios.dailyplanner
 
 import org.junit.Test
 

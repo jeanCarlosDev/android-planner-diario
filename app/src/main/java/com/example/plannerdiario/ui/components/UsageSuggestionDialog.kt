@@ -1,4 +1,4 @@
-package com.example.plannerdiario.ui.components
+﻿package com.jsjstudios.dailyplanner.ui.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -28,9 +28,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import com.example.plannerdiario.R
-import com.example.plannerdiario.ui.theme.LocalAppColors
-import com.example.plannerdiario.ui.theme.PinkVivid
+import com.jsjstudios.dailyplanner.R
+import com.jsjstudios.dailyplanner.ui.theme.LocalAppColors
+import com.jsjstudios.dailyplanner.ui.theme.PinkVivid
 
 @Composable
 fun UsageSuggestionDialog(
@@ -185,7 +185,7 @@ fun UsageSuggestionDialog(
 @Composable
 private fun UsageContentSection(
     content: String,
-    appColors: com.example.plannerdiario.ui.theme.AppColors
+    appColors: com.jsjstudios.dailyplanner.ui.theme.AppColors
 ) {
     val paragraphs = content.split("\n\n")
     paragraphs.forEach { paragraph ->

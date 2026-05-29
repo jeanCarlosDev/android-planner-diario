@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Daily Planner</string>
 
@@ -49,8 +49,8 @@
     <string name="loading">Veuillez patienter…</string>
     <string name="dlg_usage_title">COMMENT UTILISER DAILY PLANNER</string>
     <string name="usage_content">&#x1F4CB; ORGANISEZ VOS IDÉES\n\n&#x1F5C2; 1. CRÉEZ VOS LISTES\nGroupez par thème (Travail, Études, Personnel) et utilisez des couleurs pour les retrouver rapidement.\n\n&#x2705; 2. AJOUTEZ DES TÂCHES\nAppuyez sur \"Nouvelle tâche\", entrez un titre et c\'est fait.\n\n&#x1F501; 3. TÂCHES PLANIFIÉES\nActivez \"Tâche planifiée\" pour vous rappeler et répéter vos habitudes.\n\n&#x1F4C5; 4. CALENDRIER INTELLIGENT\nVisualisez les tâches terminées et à venir dans le calendrier.\n\n&#x1F4BE; 5. SAUVEGARDE SÉCURISÉE\nExportez ou importez des sauvegardes pour protéger vos données.\n\nCommencez maintenant et gagnez en concentration dans votre journée.</string>
-    <string name="lang_pt_br">🇧🇷  Português (BR)</string>
-    <string name="lang_en_us">🇺🇸  English (US)</string>
+    <string name="lang_pt_br">  Português (BR)</string>
+    <string name="lang_en_us">  English (US)</string>
     <string name="dlg_clear_all_title">TOUT SUPPRIMER</string>
     <string name="dlg_clear_all_message">Cette action supprimera définitivement TOUTES les listes et tâches.\n\nCette opération est irréversible. Êtes-vous sûr ?</string>
     <string name="btn_clear_all_confirm">Tout supprimer</string>
@@ -63,8 +63,8 @@
     <string name="menu_remove_ads">Supprimer les pubs</string>
     <string name="menu_ads_removed">✓ Sans publicité</string>
     <string name="dlg_remove_ads_title">SUPPRIMER LES PUBLICITÉS</string>
-    <string name="dlg_remove_ads_message">Supprimez toutes les publicités de l\'application pour seulement %s. Achat unique et définitif — valable pour toujours sur cet appareil.</string>
-    <string name="btn_purchase">Acheter %s</string>
+    <string name="dlg_remove_ads_message">Profitez de l\'application sans interruptions. Supprimez toutes les publicités de façon permanente en un seul achat.</string>
+    <string name="btn_purchase">Supprimer les pubs</string>
 
     <!-- AddTaskDialog -->
     <string name="dlg_new_task_title">NOUVELLE TÂCHE</string>
@@ -81,6 +81,19 @@
     <string name="label_repeat_days">Répéter pendant combien de jours ?</string>
     <string name="hint_repeat_days">Nombre de jours</string>
     <string name="attachment_fallback">fichier</string>
+    <!-- Task type selector -->
+    <string name="label_task_type">TYPE DE TÂCHE</string>
+    <string name="task_type_default">Standard</string>
+    <string name="task_type_default_subtitle">Apparaît tous les jours</string>
+    <string name="task_type_scheduled">Planifiée</string>
+    <string name="task_type_scheduled_subtitle">Liée à une date précise</string>
+    <string name="task_type_recurring">Récurrente</string>
+    <string name="task_type_recurring_subtitle">Apparaît chaque jour et doit être cochée</string>
+    <string name="label_recurrence_interval">Intervalle</string>
+    <string name="interval_always">Toujours</string>
+    <string name="interval_weekly">Hebdomadaire</string>
+    <string name="interval_biweekly">Bimensuel</string>
+    <string name="interval_monthly">Mensuel</string>
 
     <!-- TaskItem -->
     <string name="btn_edit">Modifier</string>
@@ -92,6 +105,9 @@
     <string name="dlg_new_list_title">NOUVELLE LISTE</string>
     <string name="hint_list_name">Nom de la liste…</string>
     <string name="lbl_auto">auto</string>
+    <string name="dlg_delete_list_title">SUPPRIMER LA LISTE</string>
+    <string name="dlg_delete_list_message">La liste \"%1$s\" et TOUTES les tâches associées seront supprimées définitivement.\n\nCette action est irréversible.</string>
+    <string name="btn_delete_list">Supprimer la liste</string>
 
     <!-- CustomDatePickerDialog -->
     <string name="dlg_select_date_title">SÉLECTIONNER UNE DATE</string>
@@ -99,4 +115,5 @@
     <string name="btn_next_month">Mois suivant</string>
     <string name="legend_completed">Terminées</string>
     <string name="legend_scheduled">Planifiées</string>
+    <string name="legend_recurring">Récurrentes</string>
 </resources>

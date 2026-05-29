@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Daily Planner</string>
 
@@ -49,8 +49,8 @@
     <string name="loading">请稍候…</string>
     <string name="dlg_usage_title">如何使用 Daily Planner</string>
     <string name="usage_content">&#x1F4CB; 整理您的想法\n\n&#x1F5C2; 1. 创建清单\n按主题分组（工作、学习、个人），用颜色快速查找。\n\n&#x2705; 2. 添加任务\n点击\"新任务\"，输入标题即可。\n\n&#x1F501; 3. 定时任务\n开启\"定时任务\"以设置提醒并重复习惯。\n\n&#x1F4C5; 4. 智能日历\n在日历中查看已完成和即将来临的任务。\n\n&#x1F4BE; 5. 安全备份\n导出或导入备份以保护您的数据。\n\n立即开始，让您的每天更专注。</string>
-    <string name="lang_pt_br">🇧🇷  Português (BR)</string>
-    <string name="lang_en_us">🇺🇸  English (US)</string>
+    <string name="lang_pt_br">  Português (BR)</string>
+    <string name="lang_en_us">  English (US)</string>
     <string name="dlg_clear_all_title">删除全部</string>
     <string name="dlg_clear_all_message">此操作将永久删除所有列表和任务。\n\n此操作无法撤销。您确定吗？</string>
     <string name="btn_clear_all_confirm">删除全部</string>
@@ -63,8 +63,8 @@
     <string name="menu_remove_ads">移除广告</string>
     <string name="menu_ads_removed">✓ 无广告</string>
     <string name="dlg_remove_ads_title">移除广告</string>
-    <string name="dlg_remove_ads_message">只需 %s 即可移除应用中的所有广告。一次性购买 — 在此设备上永久有效。</string>
-    <string name="btn_purchase">购买 %s</string>
+    <string name="dlg_remove_ads_message">无打扰地享受应用。只需一次购买，永久移除所有广告。</string>
+    <string name="btn_purchase">移除广告</string>
 
     <!-- AddTaskDialog -->
     <string name="dlg_new_task_title">新建任务</string>
@@ -81,6 +81,19 @@
     <string name="label_repeat_days">重复多少天？</string>
     <string name="hint_repeat_days">天数</string>
     <string name="attachment_fallback">文件</string>
+    <!-- Task type selector -->
+    <string name="label_task_type">任务类型</string>
+    <string name="task_type_default">标准</string>
+    <string name="task_type_default_subtitle">每天显示</string>
+    <string name="task_type_scheduled">计划</string>
+    <string name="task_type_scheduled_subtitle">与特定日期关联</string>
+    <string name="task_type_recurring">循环</string>
+    <string name="task_type_recurring_subtitle">每天出现，需每天勾选</string>
+    <string name="label_recurrence_interval">间隔</string>
+    <string name="interval_always">始终</string>
+    <string name="interval_weekly">每周</string>
+    <string name="interval_biweekly">每两周</string>
+    <string name="interval_monthly">每月</string>
 
     <!-- TaskItem -->
     <string name="btn_edit">编辑</string>
@@ -92,6 +105,9 @@
     <string name="dlg_new_list_title">新建列表</string>
     <string name="hint_list_name">列表名称…</string>
     <string name="lbl_auto">自动</string>
+    <string name="dlg_delete_list_title">删除列表</string>
+    <string name="dlg_delete_list_message">列表"%1$s"及所有关联任务将被永久删除。\n\n此操作无法撤销。</string>
+    <string name="btn_delete_list">删除列表</string>
 
     <!-- CustomDatePickerDialog -->
     <string name="dlg_select_date_title">选择日期</string>
@@ -99,5 +115,6 @@
     <string name="btn_next_month">下个月</string>
     <string name="legend_completed">已完成</string>
     <string name="legend_scheduled">已计划</string>
+    <string name="legend_recurring">循环</string>
 </resources>
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Daily Planner</string>
 
@@ -49,8 +49,8 @@
     <string name="loading">يرجى الانتظار…</string>
     <string name="dlg_usage_title">كيفية استخدام DAILY PLANNER</string>
     <string name="usage_content">&#x1F4CB; نظّم أفكارك\n\n&#x1F5C2; 1. أنشئ قوائمك\nرتّب المهام حسب الموضوع (العمل، الدراسة، الشخصي) واستخدم الألوان للعثور عليها بسرعة.\n\n&#x2705; 2. أضف مهاما\nاضغط على \"مهمة جديدة\"، اكتب العنوان وانتهيت.\n\n&#x1F501; 3. المهام المجدولة\nفعّل \"مهمة مجدولة\" لتذكّر العادات وتكرارها.\n\n&#x1F4C5; 4. التقويم الذكي\nاعرض المهام المنجزة والقادمة في التقويم.\n\n&#x1F4BE; 5. النسخ الاحتياطي الآمن\nصدّر أو استورد النسخ الاحتياطية للحفاظ على بياناتك.\n\nابدأ الآن وزد تركيزك في يومك.</string>
-    <string name="lang_pt_br">🇧🇷  Português (BR)</string>
-    <string name="lang_en_us">🇺🇸  English (US)</string>
+    <string name="lang_pt_br">  Português (BR)</string>
+    <string name="lang_en_us">  English (US)</string>
     <string name="dlg_clear_all_title">حذف الكل</string>
     <string name="dlg_clear_all_message">سيؤدي هذا الإجراء إلى حذف جميع القوائم والمهام بشكل دائم.\n\nلا يمكن التراجع عن هذه العملية. هل أنت متأكد؟</string>
     <string name="btn_clear_all_confirm">حذف الكل</string>
@@ -63,8 +63,8 @@
     <string name="menu_remove_ads">إزالة الإعلانات</string>
     <string name="menu_ads_removed">✓ بدون إعلانات</string>
     <string name="dlg_remove_ads_title">إزالة الإعلانات</string>
-    <string name="dlg_remove_ads_message">احذف جميع الإعلانات من التطبيق مقابل %s فقط. شراء لمرة واحدة — صالح إلى الأبد على هذا الجهاز.</string>
-    <string name="btn_purchase">شراء %s</string>
+    <string name="dlg_remove_ads_message">استمتع بالتطبيق بدون انقطاع. أزل جميع الإعلانات نهائياً بشراء واحد فقط.</string>
+    <string name="btn_purchase">إزالة الإعلانات</string>
 
     <!-- AddTaskDialog -->
     <string name="dlg_new_task_title">مهمة جديدة</string>
@@ -81,6 +81,19 @@
     <string name="label_repeat_days">كم يوماً تريد التكرار؟</string>
     <string name="hint_repeat_days">عدد الأيام</string>
     <string name="attachment_fallback">ملف</string>
+    <!-- Task type selector -->
+    <string name="label_task_type">نوع المهمة</string>
+    <string name="task_type_default">عادية</string>
+    <string name="task_type_default_subtitle">تظهر كل يوم</string>
+    <string name="task_type_scheduled">مجدولة</string>
+    <string name="task_type_scheduled_subtitle">مرتبطة بتاريخ محدد</string>
+    <string name="task_type_recurring">متكررة</string>
+    <string name="task_type_recurring_subtitle">تظهر يومياً ويجب تأشيرها</string>
+    <string name="label_recurrence_interval">الفترة</string>
+    <string name="interval_always">دائماً</string>
+    <string name="interval_weekly">أسبوعي</string>
+    <string name="interval_biweekly">نصف شهري</string>
+    <string name="interval_monthly">شهري</string>
 
     <!-- TaskItem -->
     <string name="btn_edit">تعديل</string>
@@ -92,6 +105,9 @@
     <string name="dlg_new_list_title">قائمة جديدة</string>
     <string name="hint_list_name">اسم القائمة…</string>
     <string name="lbl_auto">تلقائي</string>
+    <string name="dlg_delete_list_title">حذف القائمة</string>
+    <string name="dlg_delete_list_message">سيتم حذف القائمة \"%1$s\" وجميع المهام المرتبطة بها بشكل دائم.\n\nلا يمكن التراجع عن هذا الإجراء.</string>
+    <string name="btn_delete_list">حذف القائمة</string>
 
     <!-- CustomDatePickerDialog -->
     <string name="dlg_select_date_title">اختر التاريخ</string>
@@ -99,5 +115,6 @@
     <string name="btn_next_month">الشهر التالي</string>
     <string name="legend_completed">مكتملة</string>
     <string name="legend_scheduled">مجدولة</string>
+    <string name="legend_recurring">متكررة</string>
 </resources>
 

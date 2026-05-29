@@ -4,6 +4,13 @@
     android:viewportWidth="108"
     android:viewportHeight="108">
 
+    <!-- Scale down to 72% so all content stays inside the adaptive icon safe zone -->
+    <group
+        android:scaleX="0.72"
+        android:scaleY="0.72"
+        android:pivotX="54"
+        android:pivotY="54">
+
     <!-- Drop shadow (offset group) -->
     <group android:translateX="3" android:translateY="3">
         <path
@@ -83,5 +90,6 @@
         android:strokeLineCap="round"
         android:pathData="M42,83 H70" />
 
+    </group> <!-- end scale group -->
 </vector>
 

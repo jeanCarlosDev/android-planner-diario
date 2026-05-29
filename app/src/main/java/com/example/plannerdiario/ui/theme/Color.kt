@@ -1,4 +1,4 @@
-﻿package com.example.plannerdiario.ui.theme
+﻿package com.jsjstudios.dailyplanner.ui.theme
 
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color

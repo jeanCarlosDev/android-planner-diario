@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Daily Planner</string>
 
@@ -49,8 +49,8 @@
     <string name="loading">Bitte warten…</string>
     <string name="dlg_usage_title">SO VERWENDEST DU DAILY PLANNER</string>
     <string name="usage_content">&#x1F4CB; ORGANISIERE DEINE IDEEN\n\n&#x1F5C2; 1. ERSTELLE DEINE LISTEN\nGruppiere nach Thema (Arbeit, Studium, Persönlich) und nutze Farben zum schnellen Finden.\n\n&#x2705; 2. AUFGABEN HINZUFÜGEN\nTippe auf \"Neue Aufgabe\", gib einen Titel ein und fertig.\n\n&#x1F501; 3. GEPLANTE AUFGABEN\nAktiviere \"Geplante Aufgabe\", um Erinnerungen zu setzen und Gewohnheiten zu wiederholen.\n\n&#x1F4C5; 4. INTELLIGENTER KALENDER\nSiehe erledigte und bevorstehende Aufgaben im Kalender.\n\n&#x1F4BE; 5. SICHERES BACKUP\nExportiere oder importiere Backups, um deine Daten zu schützen.\n\nFange jetzt an und fokussiere dich besser auf deinen Tag.</string>
-    <string name="lang_pt_br">🇧🇷  Português (BR)</string>
-    <string name="lang_en_us">🇺🇸  English (US)</string>
+    <string name="lang_pt_br">  Português (BR)</string>
+    <string name="lang_en_us">  English (US)</string>
     <string name="dlg_clear_all_title">ALLES LÖSCHEN</string>
     <string name="dlg_clear_all_message">Diese Aktion löscht ALLE Listen und Aufgaben dauerhaft.\n\nDieser Vorgang kann nicht rückgängig gemacht werden. Bist du sicher?</string>
     <string name="btn_clear_all_confirm">Alles löschen</string>
@@ -63,8 +63,8 @@
     <string name="menu_remove_ads">Werbung entfernen</string>
     <string name="menu_ads_removed">✓ Werbefrei</string>
     <string name="dlg_remove_ads_title">WERBUNG ENTFERNEN</string>
-    <string name="dlg_remove_ads_message">Entferne alle Werbung aus der App für nur %s. Einmaliger Kauf — dauerhaft auf diesem Gerät gültig.</string>
-    <string name="btn_purchase">Kaufen %s</string>
+    <string name="dlg_remove_ads_message">Genieße die App ohne Unterbrechungen. Entferne alle Werbung dauerhaft mit einem einzigen Kauf.</string>
+    <string name="btn_purchase">Werbung entfernen</string>
 
     <!-- AddTaskDialog -->
     <string name="dlg_new_task_title">NEUE AUFGABE</string>
@@ -81,6 +81,19 @@
     <string name="label_repeat_days">Wie viele Tage wiederholen?</string>
     <string name="hint_repeat_days">Anzahl der Tage</string>
     <string name="attachment_fallback">Datei</string>
+    <!-- Task type selector -->
+    <string name="label_task_type">AUFGABENTYP</string>
+    <string name="task_type_default">Standard</string>
+    <string name="task_type_default_subtitle">Erscheint jeden Tag</string>
+    <string name="task_type_scheduled">Geplant</string>
+    <string name="task_type_scheduled_subtitle">Mit einem bestimmten Datum verknüpft</string>
+    <string name="task_type_recurring">Wiederkehrend</string>
+    <string name="task_type_recurring_subtitle">Erscheint täglich und muss abgehakt werden</string>
+    <string name="label_recurrence_interval">Intervall</string>
+    <string name="interval_always">Immer</string>
+    <string name="interval_weekly">Wöchentlich</string>
+    <string name="interval_biweekly">Zweiwöchentlich</string>
+    <string name="interval_monthly">Monatlich</string>
 
     <!-- TaskItem -->
     <string name="btn_edit">Bearbeiten</string>
@@ -92,6 +105,9 @@
     <string name="dlg_new_list_title">NEUE LISTE</string>
     <string name="hint_list_name">Listenname…</string>
     <string name="lbl_auto">auto</string>
+    <string name="dlg_delete_list_title">LISTE LÖSCHEN</string>
+    <string name="dlg_delete_list_message">Die Liste \"%1$s\" und ALLE verknüpften Aufgaben werden dauerhaft gelöscht.\n\nDiese Aktion kann nicht rückgängig gemacht werden.</string>
+    <string name="btn_delete_list">Liste löschen</string>
 
     <!-- CustomDatePickerDialog -->
     <string name="dlg_select_date_title">DATUM AUSWÄHLEN</string>
@@ -99,4 +115,5 @@
     <string name="btn_next_month">Nächster Monat</string>
     <string name="legend_completed">Abgeschlossen</string>
     <string name="legend_scheduled">Geplant</string>
+    <string name="legend_recurring">Wiederkehrend</string>
 </resources>

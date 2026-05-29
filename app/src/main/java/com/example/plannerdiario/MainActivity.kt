@@ -1,4 +1,4 @@
-﻿package com.example.plannerdiario
+﻿package com.jsjstudios.dailyplanner
 
 import android.os.Bundle
 import android.widget.Toast
@@ -12,15 +12,15 @@ import androidx.compose.ui.Modifier
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.plannerdiario.ads.InterstitialAdManager
-import com.example.plannerdiario.billing.BillingManager
-import com.example.plannerdiario.data.AdPreferences
-import com.example.plannerdiario.data.LanguagePreferences
-import com.example.plannerdiario.data.ThemePreferences
-import com.example.plannerdiario.ui.HomeScreen
-import com.example.plannerdiario.ui.PlannerViewModel
-import com.example.plannerdiario.ui.PlannerViewModelFactory
-import com.example.plannerdiario.ui.theme.PlannerDiarioTheme
+import com.jsjstudios.dailyplanner.ads.InterstitialAdManager
+import com.jsjstudios.dailyplanner.billing.BillingManager
+import com.jsjstudios.dailyplanner.data.AdPreferences
+import com.jsjstudios.dailyplanner.data.LanguagePreferences
+import com.jsjstudios.dailyplanner.data.ThemePreferences
+import com.jsjstudios.dailyplanner.ui.HomeScreen
+import com.jsjstudios.dailyplanner.ui.PlannerViewModel
+import com.jsjstudios.dailyplanner.ui.PlannerViewModelFactory
+import com.jsjstudios.dailyplanner.ui.theme.PlannerDiarioTheme
 import com.google.android.gms.ads.MobileAds
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

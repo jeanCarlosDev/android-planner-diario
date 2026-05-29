@@ -1,4 +1,4 @@
-<resources>
+﻿<resources>
     <string name="app_name">Daily Planner</string>
 
     <!-- Geral -->
@@ -62,8 +62,8 @@
     <string name="menu_remove_ads">Remover Anúncios</string>
     <string name="menu_ads_removed">✓ Sem anúncios</string>
     <string name="dlg_remove_ads_title">REMOVER ANÚNCIOS</string>
-    <string name="dlg_remove_ads_message">Remova todos os anúncios do aplicativo por apenas %s. Compra única e definitiva — válida para sempre neste dispositivo.</string>
-    <string name="btn_purchase">Comprar %s</string>
+    <string name="dlg_remove_ads_message">Aproveite o aplicativo sem interrupções. Remova todos os anúncios de forma permanente com uma compra única.</string>
+    <string name="btn_purchase">Remover Anúncios</string>
 
     <!-- AddTaskDialog -->
     <string name="dlg_new_task_title">NOVA TAREFA</string>
@@ -80,12 +80,29 @@
     <string name="label_repeat_days">Repetir por quantos dias?</string>
     <string name="hint_repeat_days">Quantidade de dias</string>
     <string name="attachment_fallback">arquivo</string>
+    <!-- Task type selector -->
+    <string name="label_task_type">TIPO DE TAREFA</string>
+    <string name="task_type_default">Padrão</string>
+    <string name="task_type_default_subtitle">Aparece em todos os dias</string>
+    <string name="task_type_scheduled">Programada</string>
+    <string name="task_type_scheduled_subtitle">Vinculada a uma data específica</string>
+    <string name="task_type_recurring">Recorrente</string>
+    <string name="task_type_recurring_subtitle">Aparece todo dia e deve ser checada</string>
+    <string name="label_recurrence_interval">Intervalo</string>
+    <string name="interval_always">Sempre</string>
+    <string name="interval_weekly">Semanal</string>
+    <string name="interval_biweekly">Quinzenal</string>
+    <string name="interval_monthly">Mensal</string>
 
     <!-- TaskItem -->
     <string name="btn_edit">Editar</string>
     <string name="btn_remove">Remover</string>
     <string name="dlg_delete_task_title">Apagar tarefa?</string>
     <string name="dlg_delete_task_message">"%1$s" será removida permanentemente.</string>
+
+    <string name="dlg_delete_list_title">APAGAR LISTA</string>
+    <string name="dlg_delete_list_message">A lista \"%1$s\" e TODAS as tarefas vinculadas serão apagadas permanentemente.\n\nEsta ação não pode ser desfeita.</string>
+    <string name="btn_delete_list">Apagar lista</string>
 
     <!-- AddListDialog -->
     <string name="dlg_new_list_title">NOVA LISTA</string>
@@ -98,4 +115,5 @@
     <string name="btn_next_month">Próximo mês</string>
     <string name="legend_completed">Concluídas</string>
     <string name="legend_scheduled">Programadas</string>
+    <string name="legend_recurring">Recorrentes</string>
 </resources>

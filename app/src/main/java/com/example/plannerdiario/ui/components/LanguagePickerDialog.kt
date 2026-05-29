@@ -1,4 +1,4 @@
-package com.example.plannerdiario.ui.components
+﻿package com.jsjstudios.dailyplanner.ui.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -27,9 +27,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.res.stringResource
-import com.example.plannerdiario.R
-import com.example.plannerdiario.ui.theme.LocalAppColors
-import com.example.plannerdiario.ui.theme.PinkVivid
+import com.jsjstudios.dailyplanner.R
+import com.jsjstudios.dailyplanner.ui.theme.LocalAppColors
+import com.jsjstudios.dailyplanner.ui.theme.PinkVivid
 
 // ── Modelo de opção de idioma ─────────────────────────────────────────────────
 data class LanguageOption(
@@ -154,7 +154,7 @@ fun LanguagePickerDialog(
 private fun LanguageItem(
     option: LanguageOption,
     isSelected: Boolean,
-    appColors: com.example.plannerdiario.ui.theme.AppColors,
+    appColors: com.jsjstudios.dailyplanner.ui.theme.AppColors,
     onClick: () -> Unit
 ) {
     val selectedBorderColor = if (appColors.isDark) PinkVivid else Color(0xFF1565C0)

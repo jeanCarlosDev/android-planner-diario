@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Daily Planner</string>
 
@@ -49,8 +49,8 @@
     <string name="loading">Подождите…</string>
     <string name="dlg_usage_title">КАК ИСПОЛЬЗОВАТЬ DAILY PLANNER</string>
     <string name="usage_content">&#x1F4CB; ОРГАНИЗУЙТЕ СВОИ ИДЕИ\n\n&#x1F5C2; 1. СОЗДАЙТЕ СПИСКИ\nГруппируйте по теме (Работа, Учёба, Личное) и используйте цвета для быстрого поиска.\n\n&#x2705; 2. ДОБАВЬТЕ ЗАДАЧИ\nНажмите \"Новая задача\", введите название и готово.\n\n&#x1F501; 3. ЗАПЛАНИРОВАННЫЕ ЗАДАЧИ\nВключите \"Запланированная задача\", чтобы устанавливать напоминания и повторять привычки.\n\n&#x1F4C5; 4. УМНЫЙ КАЛЕНДАРЬ\nПросматривайте выполненные и предстоящие задачи в календаре.\n\n&#x1F4BE; 5. БЕЗОПАСНОЕ РЕЗЕРВНОЕ КОПИРОВАНИЕ\nЭкспортируйте или импортируйте резервные копии для защиты данных.\n\nНачните сейчас и сосредоточьтесь на своём дне.</string>
-    <string name="lang_pt_br">🇧🇷  Português (BR)</string>
-    <string name="lang_en_us">🇺🇸  English (US)</string>
+    <string name="lang_pt_br">  Português (BR)</string>
+    <string name="lang_en_us">  English (US)</string>
     <string name="dlg_clear_all_title">УДАЛИТЬ ВСЁ</string>
     <string name="dlg_clear_all_message">Это действие навсегда удалит ВСЕ списки и задачи.\n\nОперацию нельзя отменить. Вы уверены?</string>
     <string name="btn_clear_all_confirm">Удалить всё</string>
@@ -63,8 +63,8 @@
     <string name="menu_remove_ads">Убрать рекламу</string>
     <string name="menu_ads_removed">✓ Без рекламы</string>
     <string name="dlg_remove_ads_title">УБРАТЬ РЕКЛАМУ</string>
-    <string name="dlg_remove_ads_message">Уберите всю рекламу из приложения всего за %s. Единоразовая покупка — действует навсегда на этом устройстве.</string>
-    <string name="btn_purchase">Купить %s</string>
+    <string name="dlg_remove_ads_message">Пользуйтесь приложением без прерываний. Уберите всю рекламу навсегда единоразовой покупкой.</string>
+    <string name="btn_purchase">Убрать рекламу</string>
 
     <!-- AddTaskDialog -->
     <string name="dlg_new_task_title">НОВАЯ ЗАДАЧА</string>
@@ -81,6 +81,19 @@
     <string name="label_repeat_days">Повторять сколько дней?</string>
     <string name="hint_repeat_days">Количество дней</string>
     <string name="attachment_fallback">файл</string>
+    <!-- Task type selector -->
+    <string name="label_task_type">ТИП ЗАДАЧИ</string>
+    <string name="task_type_default">Обычная</string>
+    <string name="task_type_default_subtitle">Отображается каждый день</string>
+    <string name="task_type_scheduled">Запланированная</string>
+    <string name="task_type_scheduled_subtitle">Привязана к конкретной дате</string>
+    <string name="task_type_recurring">Повторяющаяся</string>
+    <string name="task_type_recurring_subtitle">Появляется ежедневно и требует отметки</string>
+    <string name="label_recurrence_interval">Интервал</string>
+    <string name="interval_always">Всегда</string>
+    <string name="interval_weekly">Еженедельно</string>
+    <string name="interval_biweekly">Раз в две недели</string>
+    <string name="interval_monthly">Ежемесячно</string>
 
     <!-- TaskItem -->
     <string name="btn_edit">Редактировать</string>
@@ -92,6 +105,9 @@
     <string name="dlg_new_list_title">НОВЫЙ СПИСОК</string>
     <string name="hint_list_name">Название списка…</string>
     <string name="lbl_auto">авто</string>
+    <string name="dlg_delete_list_title">УДАЛИТЬ СПИСОК</string>
+    <string name="dlg_delete_list_message">Список «%1$s» и ВСЕ связанные задачи будут удалены навсегда.\n\nЭто действие нельзя отменить.</string>
+    <string name="btn_delete_list">Удалить список</string>
 
     <!-- CustomDatePickerDialog -->
     <string name="dlg_select_date_title">ВЫБРАТЬ ДАТУ</string>
@@ -99,5 +115,6 @@
     <string name="btn_next_month">Следующий месяц</string>
     <string name="legend_completed">Выполненные</string>
     <string name="legend_scheduled">Запланированные</string>
+    <string name="legend_recurring">Повторяющиеся</string>
 </resources>
 

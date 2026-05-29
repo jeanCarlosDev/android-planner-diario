@@ -1,4 +1,4 @@
-﻿package com.example.plannerdiario.ui.components
+﻿package com.jsjstudios.dailyplanner.ui.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -23,10 +23,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.res.stringResource
-import com.example.plannerdiario.R
-import com.example.plannerdiario.data.ColorShapeOption
-import com.example.plannerdiario.data.listPresetOptions
-import com.example.plannerdiario.ui.theme.*
+import com.jsjstudios.dailyplanner.R
+import com.jsjstudios.dailyplanner.data.ColorShapeOption
+import com.jsjstudios.dailyplanner.data.listPresetOptions
+import com.jsjstudios.dailyplanner.ui.theme.*
 
 @Composable
 fun AddListDialog(

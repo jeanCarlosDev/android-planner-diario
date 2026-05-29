@@ -1,4 +1,4 @@
-﻿package com.example.plannerdiario.ui
+﻿package com.jsjstudios.dailyplanner.ui
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -43,19 +43,19 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.ui.res.stringResource
-import com.example.plannerdiario.R
-import com.example.plannerdiario.data.LanguagePreferences
-import com.example.plannerdiario.ui.components.AddListDialog
-import com.example.plannerdiario.ui.components.AddTaskDialog
-import com.example.plannerdiario.ui.components.AdBannerView
-import com.example.plannerdiario.ui.components.CustomDatePickerDialog
-import com.example.plannerdiario.ui.components.DataManagementDialog
-import com.example.plannerdiario.ui.components.LanguagePickerDialog
-import com.example.plannerdiario.ui.components.availableLanguages
-import com.example.plannerdiario.ui.components.ShapeIcon
-import com.example.plannerdiario.ui.components.UsageSuggestionDialog
-import com.example.plannerdiario.ui.components.TaskItem
-import com.example.plannerdiario.ui.theme.*
+import com.jsjstudios.dailyplanner.R
+import com.jsjstudios.dailyplanner.data.LanguagePreferences
+import com.jsjstudios.dailyplanner.ui.components.AddListDialog
+import com.jsjstudios.dailyplanner.ui.components.AddTaskDialog
+import com.jsjstudios.dailyplanner.ui.components.AdBannerView
+import com.jsjstudios.dailyplanner.ui.components.CustomDatePickerDialog
+import com.jsjstudios.dailyplanner.ui.components.DataManagementDialog
+import com.jsjstudios.dailyplanner.ui.components.LanguagePickerDialog
+import com.jsjstudios.dailyplanner.ui.components.availableLanguages
+import com.jsjstudios.dailyplanner.ui.components.ShapeIcon
+import com.jsjstudios.dailyplanner.ui.components.UsageSuggestionDialog
+import com.jsjstudios.dailyplanner.ui.components.TaskItem
+import com.jsjstudios.dailyplanner.ui.theme.*
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.time.LocalDate
@@ -85,6 +85,7 @@ fun HomeScreen(
     val tasks           by viewModel.tasks.collectAsStateWithLifecycle()
     val completedDates  by viewModel.completedDates.collectAsStateWithLifecycle()
     val scheduledDates  by viewModel.scheduledDates.collectAsStateWithLifecycle()
+    val recurringTasks  by viewModel.recurringTasks.collectAsStateWithLifecycle()
 
     var showDatePicker       by remember { mutableStateOf(false) }
     var showListDropdown     by remember { mutableStateOf(false) }
@@ -98,12 +99,13 @@ fun HomeScreen(
     var showUsageGuide       by remember { mutableStateOf(false) }
     var showDataManagement   by remember { mutableStateOf(false) }
     var showRemoveAdsDialog  by remember { mutableStateOf(false) }
+    var showDeleteListConfirm by remember { mutableStateOf(false) }
     var pendingExportJson    by remember { mutableStateOf<String?>(null) }
 
     val isTablet = LocalConfiguration.current.screenWidthDp >= 600
     val locale        = Locale.getDefault()
     val dayOfWeekName = selectedDate.dayOfWeek.getDisplayName(TextStyle.FULL, locale)
-        .replaceFirstChar { it.uppercase() }.take(6).uppercase()
+        .replaceFirstChar { it.uppercase() }.uppercase()
     val monthName = selectedDate.month.getDisplayName(TextStyle.FULL, locale)
     val isToday   = selectedDate == LocalDate.now()
     val listColor = remember(selectedList) {
@@ -148,7 +150,8 @@ fun HomeScreen(
             selectedDate   = selectedDate,
             completedDates = completedDates,
             scheduledDates = scheduledDates,
-            onDateSelected = { viewModel.selectDate(it); onInteraction() },
+            recurringTasks = recurringTasks,
+            onDateSelected = { viewModel.selectDate(it) },
             onDismiss      = { showDatePicker = false }
         )
     }
@@ -165,8 +168,8 @@ fun HomeScreen(
     if (showAddTaskDialog) {
         AddTaskDialog(
             onDismiss = { showAddTaskDialog = false },
-            onConfirm = { title, desc, uri, type, name, isScheduled, repeatDays ->
-                viewModel.addTask(title, desc, uri, type, name, isScheduled, repeatDays)
+            onConfirm = { title, desc, uri, type, name, isScheduled, repeatDays, isRecurring, recurrenceInterval ->
+                viewModel.addTask(title, desc, uri, type, name, isScheduled, repeatDays, isRecurring, recurrenceInterval)
                 showAddTaskDialog = false
                 onInteraction()
             }
@@ -212,11 +215,10 @@ fun HomeScreen(
 
     // ── Diálogo: Remover Anúncios ─────────────────────────────────────────
     if (showRemoveAdsDialog) {
-        val priceLabel = purchasePrice ?: "..."
         AppConfirmDialog(
             title        = stringResource(R.string.dlg_remove_ads_title),
-            message      = stringResource(R.string.dlg_remove_ads_message, priceLabel),
-            confirmLabel = stringResource(R.string.btn_purchase, priceLabel),
+            message      = stringResource(R.string.dlg_remove_ads_message),
+            confirmLabel = stringResource(R.string.btn_purchase),
             onConfirm    = {
                 showRemoveAdsDialog = false
                 onRemoveAds()
@@ -238,6 +240,19 @@ fun HomeScreen(
                         appColors = appColors,
                         destructive = true
                     )
+    }
+
+    // ── Confirmação: Apagar lista selecionada ─────────────────────────────
+    if (showDeleteListConfirm && selectedList != null) {
+        AppConfirmDialog(
+            title        = stringResource(R.string.dlg_delete_list_title),
+            message      = stringResource(R.string.dlg_delete_list_message, selectedList!!.name),
+            confirmLabel = stringResource(R.string.btn_delete_list),
+            onConfirm    = { viewModel.deleteList(selectedList!!); showDeleteListConfirm = false },
+            onDismiss    = { showDeleteListConfirm = false },
+            appColors    = appColors,
+            destructive  = true
+        )
     }
 
     // ── Feedback: Importação bem-sucedida ─────────────────────────────────
@@ -498,33 +513,92 @@ fun HomeScreen(
                 }
                 Spacer(Modifier.height(4.dp))
                 Row(
+                    modifier = Modifier.fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center
                 ) {
-                    Text(
-                        text = selectedDate.dayOfMonth.toString(),
-                        fontSize = 72.sp,
-                        fontWeight = FontWeight.Black,
-                        color = appColors.ink,
-                        lineHeight = 72.sp
-                    )
-                    Spacer(Modifier.width(10.dp))
-                    Column {
-                        Text(text = monthName, fontSize = 22.sp, fontWeight = FontWeight.Bold, color = PinkVivid)
-                        Text(text = selectedDate.year.toString(), fontSize = 18.sp, fontWeight = FontWeight.Bold, color = appColors.ink)
+                    // Seta: dia anterior
+                    Box(
+                        modifier = Modifier
+                            .size(40.dp)
+                            .clip(CircleShape)
+                            .background(appColors.ink.copy(alpha = 0.07f))
+                            .clickable { viewModel.goToPreviousDay() },
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(
+                            Icons.Default.ChevronLeft,
+                            contentDescription = null,
+                            tint = appColors.ink,
+                            modifier = Modifier.size(26.dp)
+                        )
+                    }
+                    Spacer(Modifier.width(8.dp))
+                    // Data central
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+                        Text(
+                            text = selectedDate.dayOfMonth.toString(),
+                            fontSize = 72.sp,
+                            fontWeight = FontWeight.Black,
+                            color = appColors.ink,
+                            lineHeight = 72.sp
+                        )
+                        Spacer(Modifier.width(10.dp))
+                        Column {
+                            Text(text = monthName, fontSize = 22.sp, fontWeight = FontWeight.Bold, color = PinkVivid)
+                            Text(text = selectedDate.year.toString(), fontSize = 18.sp, fontWeight = FontWeight.Bold, color = appColors.ink)
+                        }
+                    }
+                    Spacer(Modifier.width(8.dp))
+                    // Seta: próximo dia
+                    Box(
+                        modifier = Modifier
+                            .size(40.dp)
+                            .clip(CircleShape)
+                            .background(appColors.ink.copy(alpha = 0.07f))
+                            .clickable { viewModel.goToNextDay() },
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(
+                            Icons.Default.ChevronRight,
+                            contentDescription = null,
+                            tint = appColors.ink,
+                            modifier = Modifier.size(26.dp)
+                        )
                     }
                 }
                 Spacer(Modifier.height(8.dp))
-                OutlinedButton(
-                    onClick = { showDatePicker = true },
-                    shape = RoundedCornerShape(8.dp),
-                    border = BorderStroke(1.5.dp, appColors.ink.copy(alpha = 0.4f)),
-                    contentPadding = PaddingValues(horizontal = 16.dp, vertical = 6.dp),
-                    colors = ButtonDefaults.outlinedButtonColors(contentColor = appColors.ink)
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Icon(Icons.Default.CalendarMonth, null, modifier = Modifier.size(16.dp))
-                    Spacer(Modifier.width(6.dp))
-                    Text(stringResource(R.string.btn_change_date), style = MaterialTheme.typography.labelMedium, letterSpacing = 1.5.sp)
+                    OutlinedButton(
+                        onClick = { showDatePicker = true },
+                        shape = RoundedCornerShape(8.dp),
+                        border = BorderStroke(1.5.dp, appColors.ink.copy(alpha = 0.4f)),
+                        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 6.dp),
+                        colors = ButtonDefaults.outlinedButtonColors(contentColor = appColors.ink)
+                    ) {
+                        Icon(Icons.Default.CalendarMonth, null, modifier = Modifier.size(16.dp))
+                        Spacer(Modifier.width(6.dp))
+                        Text(stringResource(R.string.btn_change_date), style = MaterialTheme.typography.labelMedium, letterSpacing = 1.5.sp)
+                    }
+                    if (!isToday) {
+                        OutlinedButton(
+                            onClick = { viewModel.selectDate(LocalDate.now()) },
+                            shape = RoundedCornerShape(8.dp),
+                            border = BorderStroke(1.5.dp, PinkVivid.copy(alpha = 0.7f)),
+                            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 6.dp),
+                            colors = ButtonDefaults.outlinedButtonColors(contentColor = PinkVivid)
+                        ) {
+                            Icon(Icons.Default.Today, null, modifier = Modifier.size(16.dp))
+                            Spacer(Modifier.width(6.dp))
+                            Text(stringResource(R.string.today_badge), style = MaterialTheme.typography.labelMedium, letterSpacing = 1.5.sp)
+                        }
+                    }
                 }
                 Spacer(Modifier.height(12.dp))
             }
@@ -801,6 +875,24 @@ fun HomeScreen(
                 ) {
                     Icon(Icons.Default.Add, stringResource(R.string.btn_new_list), tint = Color.White, modifier = Modifier.size(24.dp))
                 }
+
+                // 🗑 Delete selected list button (só aparece quando há lista selecionada)
+                if (selectedList != null) {
+                    Box(
+                        modifier = Modifier
+                            .size(52.dp)
+                            .graphicsLayer { clip = false }
+                            .drawBehind {
+                                drawRoundRect(appColors.shadow, Offset(4.dp.toPx(), 4.dp.toPx()), size, CornerRadius(8.dp.toPx()))
+                            }
+                            .clip(RoundedCornerShape(8.dp))
+                            .background(Color(0xFFE53935))
+                            .clickable { showDeleteListConfirm = true },
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(Icons.Default.DeleteOutline, stringResource(R.string.btn_delete), tint = Color.White, modifier = Modifier.size(24.dp))
+                    }
+                }
             }
             Spacer(Modifier.height(16.dp))
 
@@ -828,7 +920,7 @@ fun HomeScreen(
                             listColor = listColor,
                             onToggle  = { viewModel.toggleTask(task); onInteraction() },
                             onDelete  = { viewModel.deleteTask(task); onInteraction() },
-                            onEdit    = { title, desc, uri, type, name, _, _ ->
+                            onEdit    = { title, desc, uri, type, name, _, _, _, _ ->
                                 viewModel.updateTask(task, title, desc, uri, type, name)
                                 onInteraction()
                             }

@@ -1,4 +1,4 @@
-﻿package com.example.plannerdiario.data
+﻿package com.jsjstudios.dailyplanner.data
 import kotlinx.coroutines.flow.Flow
 
 class PlannerRepository(
@@ -22,6 +22,9 @@ class PlannerRepository(
 
     fun getScheduledDates(listId: Long): Flow<List<String>> =
         taskDao.getScheduledDates(listId)
+
+    fun getRecurringTasks(listId: Long): Flow<List<Task>> =
+        taskDao.getRecurringTasks(listId)
 
     suspend fun getAllTasksOnce(): List<Task> = taskDao.getAllDirect()
 

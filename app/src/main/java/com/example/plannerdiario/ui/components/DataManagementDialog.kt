@@ -1,4 +1,4 @@
-package com.example.plannerdiario.ui.components
+﻿package com.jsjstudios.dailyplanner.ui.components
 
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -30,14 +30,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import com.example.plannerdiario.R
+import com.jsjstudios.dailyplanner.R
 // ─── GOOGLE DRIVE ─── descomentar para reativar no futuro ───────────────────
-// import com.example.plannerdiario.data.DriveBackupManager
+// import com.jsjstudios.dailyplanner.data.DriveBackupManager
 // import com.google.android.gms.auth.api.signin.GoogleSignIn
 // import com.google.android.gms.common.api.ApiException
 // ────────────────────────────────────────────────────────────────────────────
-import com.example.plannerdiario.ui.theme.LocalAppColors
-import com.example.plannerdiario.ui.theme.PinkVivid
+import com.jsjstudios.dailyplanner.ui.theme.LocalAppColors
+import com.jsjstudios.dailyplanner.ui.theme.PinkVivid
 
 @Composable
 fun DataManagementDialog(
@@ -225,7 +225,7 @@ fun DataManagementDialog(
 @Composable
 private fun SectionTitle(
     title: String,
-    appColors: com.example.plannerdiario.ui.theme.AppColors
+    appColors: com.jsjstudios.dailyplanner.ui.theme.AppColors
 ) {
     val lineColor = appColors.ink.copy(alpha = 0.25f)
     val textColor = appColors.ink.copy(alpha = 0.55f)
@@ -251,7 +251,7 @@ private fun DataActionButton(
     icon: ImageVector,
     label: String,
     color: Color,
-    appColors: com.example.plannerdiario.ui.theme.AppColors,
+    appColors: com.jsjstudios.dailyplanner.ui.theme.AppColors,
     enabled: Boolean = true,
     onClick: () -> Unit
 ) {

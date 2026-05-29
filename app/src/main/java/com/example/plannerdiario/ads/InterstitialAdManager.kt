@@ -1,4 +1,4 @@
-package com.example.plannerdiario.ads
+﻿package com.jsjstudios.dailyplanner.ads
 
 import android.app.Activity
 import android.content.Context

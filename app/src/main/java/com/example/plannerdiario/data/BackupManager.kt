@@ -1,4 +1,4 @@
-package com.example.plannerdiario.data
+﻿package com.jsjstudios.dailyplanner.data
 
 import org.json.JSONArray
 import org.json.JSONObject

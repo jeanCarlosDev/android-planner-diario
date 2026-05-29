@@ -1,4 +1,4 @@
-﻿package com.example.plannerdiario.data
+﻿package com.jsjstudios.dailyplanner.data
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 

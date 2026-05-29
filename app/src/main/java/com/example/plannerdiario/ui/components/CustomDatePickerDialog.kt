@@ -1,4 +1,4 @@
-package com.example.plannerdiario.ui.components
+﻿package com.jsjstudios.dailyplanner.ui.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -26,15 +26,20 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
-import com.example.plannerdiario.ui.theme.LocalAppColors
-import com.example.plannerdiario.ui.theme.PinkVivid
-import com.example.plannerdiario.ui.theme.YellowFresh
+import com.jsjstudios.dailyplanner.ui.theme.LocalAppColors
+import com.jsjstudios.dailyplanner.ui.theme.MintTeal
+import com.jsjstudios.dailyplanner.ui.theme.PinkVivid
+import com.jsjstudios.dailyplanner.ui.theme.YellowFresh
 import androidx.compose.ui.res.stringResource
-import com.example.plannerdiario.R
+import com.jsjstudios.dailyplanner.R
+import com.jsjstudios.dailyplanner.data.Task
 import java.time.DayOfWeek
+import java.time.Instant
 import java.time.LocalDate
 import java.time.YearMonth
+import java.time.ZoneId
 import java.time.format.TextStyle
+import java.time.temporal.ChronoUnit
 import java.util.Locale
 
 // Dias da semana localizados — começa no domingo (padrão BR e US)
@@ -49,11 +54,28 @@ private fun firstDayOffset(month: YearMonth): Int {
     return if (dow == 7) 0 else dow
 }
 
+/** Verifica se uma tarefa recorrente deve aparecer em [date] com base no intervalo */
+private fun recurringAppearsOn(task: Task, date: LocalDate): Boolean {
+    val createdDate = Instant.ofEpochMilli(task.createdAt)
+        .atZone(ZoneId.systemDefault())
+        .toLocalDate()
+    val daysDiff = ChronoUnit.DAYS.between(createdDate, date).toInt()
+    if (daysDiff < 0) return false
+    return when (task.recurrenceInterval) {
+        "ALWAYS", null -> true
+        "WEEKLY"       -> daysDiff % 7  == 0
+        "BIWEEKLY"     -> daysDiff % 15 == 0
+        "MONTHLY"      -> daysDiff % 30 == 0
+        else           -> true
+    }
+}
+
 @Composable
 fun CustomDatePickerDialog(
     selectedDate: LocalDate,
     completedDates: Set<LocalDate>,
     scheduledDates: Set<LocalDate>,
+    recurringTasks: List<Task> = emptyList(),
     onDateSelected: (LocalDate) -> Unit,
     onDismiss: () -> Unit
 ) {
@@ -164,6 +186,7 @@ fun CustomDatePickerDialog(
                                             val isToday      = date == today
                                             val hasCompleted = date in completedDates
                                             val hasScheduled = date in scheduledDates
+                                            val hasRecurring = recurringTasks.any { recurringAppearsOn(it, date) }
 
                                             DayCell(
                                                 dayNum       = dayNum,
@@ -171,6 +194,7 @@ fun CustomDatePickerDialog(
                                                 isToday      = isToday,
                                                 hasCompleted = hasCompleted,
                                                 hasScheduled = hasScheduled,
+                                                hasRecurring = hasRecurring,
                                                 appColors    = appColors,
                                                 onClick      = { tempSelected = date }
                                             )
@@ -182,14 +206,19 @@ fun CustomDatePickerDialog(
                     }
 
                     // ── Legenda ───────────────────────────────────────────
-                    Row(
-                        modifier              = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.Center,
-                        verticalAlignment     = Alignment.CenterVertically
+                    Column(
+                        modifier            = Modifier.fillMaxWidth(),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.spacedBy(6.dp)
                     ) {
-                        LegendItem(color = Color(0xFF43A047), label = stringResource(R.string.legend_completed))
-                        Spacer(Modifier.width(16.dp))
-                        LegendItem(color = YellowFresh, label = stringResource(R.string.legend_scheduled))
+                        Row(
+                            horizontalArrangement = Arrangement.spacedBy(16.dp),
+                            verticalAlignment     = Alignment.CenterVertically
+                        ) {
+                            LegendItem(color = Color(0xFF43A047), label = stringResource(R.string.legend_completed))
+                            LegendItem(color = YellowFresh,       label = stringResource(R.string.legend_scheduled))
+                        }
+                        LegendItem(color = MintTeal, label = stringResource(R.string.legend_recurring))
                     }
 
                     // ── Botões ────────────────────────────────────────────
@@ -240,7 +269,8 @@ private fun DayCell(
     isToday: Boolean,
     hasCompleted: Boolean,
     hasScheduled: Boolean,
-    appColors: com.example.plannerdiario.ui.theme.AppColors,
+    hasRecurring: Boolean,
+    appColors: com.jsjstudios.dailyplanner.ui.theme.AppColors,
     onClick: () -> Unit
 ) {
     val circleBg = when {
@@ -296,6 +326,14 @@ private fun DayCell(
                         .background(YellowFresh)
                 )
             }
+            if (hasRecurring) {
+                Box(
+                    modifier = Modifier
+                        .size(4.dp)
+                        .clip(CircleShape)
+                        .background(MintTeal)
+                )
+            }
         }
     }
 }
@@ -316,8 +354,10 @@ private fun LegendItem(color: Color, label: String) {
         )
         Text(
             label,
-            style = MaterialTheme.typography.labelSmall,
-            color = appColors.ink.copy(alpha = 0.7f)
+            style    = MaterialTheme.typography.labelSmall,
+            color    = appColors.ink.copy(alpha = 0.7f),
+            maxLines = 1,
+            softWrap = false
         )
     }
 }

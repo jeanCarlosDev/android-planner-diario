@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Daily Planner</string>
 
@@ -49,8 +49,8 @@
     <string name="loading">Please wait…</string>
     <string name="dlg_usage_title">HOW TO USE DAILY PLANNER</string>
     <string name="usage_content">&#x1F4CB; ORGANIZE YOUR IDEAS\n\n&#x1F5C2; 1. CREATE YOUR LISTS\nGroup by theme (Work, Studies, Personal) and use colors to find them quickly.\n\n&#x2705; 2. ADD TASKS\nTap \"New Task\", enter a title and you\'re done.\n\n&#x1F501; 3. SCHEDULED TASKS\nEnable \"Scheduled Task\" to set reminders and repeat habits.\n\n&#x1F4C5; 4. SMART CALENDAR\nSee completed and upcoming tasks in the calendar.\n\n&#x1F4BE; 5. SECURE BACKUP\nExport or import backups to keep your data safe.\n\nStart now and get more focus in your day.</string>
-    <string name="lang_pt_br">🇧🇷  Português (BR)</string>
-    <string name="lang_en_us">🇺🇸  English (US)</string>
+    <string name="lang_pt_br">  Português (BR)</string>
+    <string name="lang_en_us">  English (US)</string>
     <string name="dlg_clear_all_title">DELETE ALL</string>
     <string name="dlg_clear_all_message">This action will permanently delete ALL lists and tasks.\n\nThis operation cannot be undone. Are you sure?</string>
     <string name="btn_clear_all_confirm">Delete all</string>
@@ -63,8 +63,8 @@
     <string name="menu_remove_ads">Remove Ads</string>
     <string name="menu_ads_removed">✓ Ad-free</string>
     <string name="dlg_remove_ads_title">REMOVE ADS</string>
-    <string name="dlg_remove_ads_message">Remove all ads from the app for just %s. A one-time purchase — valid forever on this device.</string>
-    <string name="btn_purchase">Buy %s</string>
+    <string name="dlg_remove_ads_message">Enjoy the app without interruptions. Permanently remove all ads with a single purchase.</string>
+    <string name="btn_purchase">Remove Ads</string>
 
     <!-- AddTaskDialog -->
     <string name="dlg_new_task_title">NEW TASK</string>
@@ -81,6 +81,19 @@
     <string name="label_repeat_days">Repeat for how many days?</string>
     <string name="hint_repeat_days">Number of days</string>
     <string name="attachment_fallback">file</string>
+    <!-- Task type selector -->
+    <string name="label_task_type">TASK TYPE</string>
+    <string name="task_type_default">Standard</string>
+    <string name="task_type_default_subtitle">Appears every day</string>
+    <string name="task_type_scheduled">Scheduled</string>
+    <string name="task_type_scheduled_subtitle">Linked to a specific date</string>
+    <string name="task_type_recurring">Recurring</string>
+    <string name="task_type_recurring_subtitle">Appears daily and must be checked</string>
+    <string name="label_recurrence_interval">Interval</string>
+    <string name="interval_always">Always</string>
+    <string name="interval_weekly">Weekly</string>
+    <string name="interval_biweekly">Biweekly</string>
+    <string name="interval_monthly">Monthly</string>
 
     <!-- TaskItem -->
     <string name="btn_edit">Edit</string>
@@ -92,6 +105,9 @@
     <string name="dlg_new_list_title">NEW LIST</string>
     <string name="hint_list_name">List name…</string>
     <string name="lbl_auto">auto</string>
+    <string name="dlg_delete_list_title">DELETE LIST</string>
+    <string name="dlg_delete_list_message">The list \"%1$s\" and ALL linked tasks will be permanently deleted.\n\nThis action cannot be undone.</string>
+    <string name="btn_delete_list">Delete list</string>
 
     <!-- CustomDatePickerDialog -->
     <string name="dlg_select_date_title">SELECT DATE</string>
@@ -99,4 +115,5 @@
     <string name="btn_next_month">Next month</string>
     <string name="legend_completed">Completed</string>
     <string name="legend_scheduled">Scheduled</string>
+    <string name="legend_recurring">Recurring</string>
 </resources>

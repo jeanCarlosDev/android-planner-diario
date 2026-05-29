@@ -1,9 +1,9 @@
-package com.example.plannerdiario.billing
+﻿package com.jsjstudios.dailyplanner.billing
 
 import android.app.Activity
 import android.content.Context
 import com.android.billingclient.api.*
-import com.example.plannerdiario.data.AdPreferences
+import com.jsjstudios.dailyplanner.data.AdPreferences
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

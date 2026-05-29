@@ -1,4 +1,4 @@
-package com.example.plannerdiario.ui.components
+﻿package com.jsjstudios.dailyplanner.ui.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -6,8 +6,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.plannerdiario.data.Task
-import com.example.plannerdiario.ui.theme.PlannerDiarioTheme
+import com.jsjstudios.dailyplanner.data.Task
+import com.jsjstudios.dailyplanner.ui.theme.PlannerDiarioTheme
 
 // ── TaskItem ──────────────────────────────────────────────────────────────────
 
@@ -23,7 +23,7 @@ private fun TaskItemPreview() {
             ),
             onToggle = {},
             onDelete = {},
-            onEdit   = { _, _, _, _, _, _, _ -> }
+            onEdit   = { _, _, _, _, _, _, _, _, _ -> }
         )
     }
 }
@@ -40,7 +40,7 @@ private fun TaskItemCompletedPreview() {
             ),
             onToggle = {},
             onDelete = {},
-            onEdit   = { _, _, _, _, _, _, _ -> }
+            onEdit   = { _, _, _, _, _, _, _, _, _ -> }
         )
     }
 }
@@ -59,7 +59,7 @@ private fun TaskItemLinkPreview() {
             ),
             onToggle = {},
             onDelete = {},
-            onEdit   = { _, _, _, _, _, _, _ -> }
+            onEdit   = { _, _, _, _, _, _, _, _, _ -> }
         )
     }
 }
@@ -76,7 +76,7 @@ private fun TaskItemDarkPreview() {
             ),
             onToggle = {},
             onDelete = {},
-            onEdit   = { _, _, _, _, _, _, _ -> }
+            onEdit   = { _, _, _, _, _, _, _, _, _ -> }
         )
     }
 }
